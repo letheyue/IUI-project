@@ -3,6 +3,7 @@ class CreateUsers < ActiveRecord::Migration[5.0]
     create_table :users do |t|
       t.string :name
       t.string :email
+      add_index :users, :email, unique: true
 
       t.timestamps
     end
