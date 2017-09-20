@@ -1,5 +1,9 @@
 # ignore IDEA files
 .idea/
+
 # ignore Mac Os files
 *.DS_Store
+
+# ignore bundle folder
+.bundle/
 

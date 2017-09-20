@@ -32,6 +32,12 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# Use oauth2 for accessing yelp API
+gem 'oauth2', '~> 1.2'
+
+# Enable Haml views
+gem 'haml'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

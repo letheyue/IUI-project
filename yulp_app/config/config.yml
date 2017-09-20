@@ -1,0 +1,28 @@
+# inspired by:
+# http://stackoverflow.com/questions/592554/best-way-to-create-custom-config-options-for-my-rails-app
+
+defaults: &defaults
+  yelp:
+    endpoint: https://api.yelp.com/
+    token_url: /oauth2/token
+    client_id: vcGntxAAW-qa0uxftURCaw
+    secret: NtTiz622Y109mqNofwnclP7LUcdw5hH0wj0etN9xv1Q6TTj95BSiNtvY9sJ78HIP
+
+
+development:
+  <<: *defaults
+
+
+integration:
+  <<: *defaults
+
+
+production:
+  <<: *defaults
+
+
+
+
+
+
+
