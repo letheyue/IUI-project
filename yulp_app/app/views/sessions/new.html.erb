@@ -16,6 +16,11 @@
 
         <%= f.submit "Log in", class: "btn btn-primary" %>
     <% end %>
-    <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+    <p>
+      New user?
+      <%= link_to "Sign up now!", signup_path %>
+      <%= link_to "Sign up with Facebook", "/auth/facebook", id: "sign_in_fb" %>
+      <%= link_to "Sign up with Google", "/auth/google_oauth2", id: "sign_in_gg" %>
+    </p>
   </div>
 </div>

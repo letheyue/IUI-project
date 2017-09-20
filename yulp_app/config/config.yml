@@ -7,7 +7,12 @@ defaults: &defaults
     token_url: /oauth2/token
     client_id: vcGntxAAW-qa0uxftURCaw
     secret: NtTiz622Y109mqNofwnclP7LUcdw5hH0wj0etN9xv1Q6TTj95BSiNtvY9sJ78HIP
-
+  facebook:
+    app_id: 1839950906316687
+    app_secret: 50fb090fbb36a76b223f69e633bcd848
+  google:
+    app_id: 78232634094-fau43a2qu9fdh87qs9711h9is5dggrin.apps.googleusercontent.com
+    app_secret: OmIOXiM-W12yCsIY4yJ4ENmN
 
 development:
   <<: *defaults

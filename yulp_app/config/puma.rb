@@ -4,16 +4,16 @@
 # the maximum value specified for Puma. Default is set to 5 threads for minimum
 # and maximum, this matches the default thread size of Active Record.
 #
-threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }.to_i
-threads threads_count, threads_count
+# threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }.to_i
+# threads threads_count, threads_count
 
 # Specifies the `port` that Puma will listen on to receive requests, default is 3000.
 #
-port        ENV.fetch("PORT") { 3000 }
+# port        ENV.fetch("PORT") { 3000 }
 
 # Specifies the `environment` that Puma will run in.
 #
-environment ENV.fetch("RAILS_ENV") { "development" }
+# environment ENV.fetch("RAILS_ENV") { "development" }
 
 # Specifies the number of `workers` to boot in clustered mode.
 # Workers are forked webserver processes. If using threads and workers together
@@ -43,6 +43,10 @@ environment ENV.fetch("RAILS_ENV") { "development" }
 #   ActiveRecord::Base.establish_connection if defined?(ActiveRecord)
 # end
 
+
+# Duplicate settings above and will cause "Address already in use" error
+# Solution: comment lines above and leave only the following codes
+
 # Allow puma to be restarted by `rails restart` command.
 plugin :tmp_restart
 
@@ -54,7 +58,6 @@ rackup DefaultRackup
 port ENV['PORT'] || 3000
 environment ENV['RACK_ENV'] || 'development'
 on_worker_boot do
-# 参见：https://devcenter.heroku.com/articles/
-# deploying-rails-applications-with-the-puma-web-server#on-worker-boot
+#https://devcenter.heroku.com/articles/deploying-rails-applications-with-the-puma-web-server#on-worker-boot
   ActiveRecord::Base.establish_connection
 end

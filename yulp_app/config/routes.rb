@@ -20,4 +20,9 @@ Rails.application.routes.draw do
 
   resources :users
 
+  resources :sessions, only: [:create, :destroy]
+  # facebook login & google login
+  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'auth/failure', to: redirect('/')
+
 end

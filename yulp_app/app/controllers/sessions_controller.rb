@@ -4,6 +4,17 @@ class SessionsController < ApplicationController
   end
 
   def create
+    # first check for FB & Google login
+    if params[:session].nil?||params[:session][:email].nil?
+      user = User.from_omniauth(env["omniauth.auth"])
+      if user
+        session[:user_id] = user.id
+        redirect_to user
+        return
+      end
+    end
+
+    # then perform normal searching
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
       log_in user

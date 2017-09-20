@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    byebug
   end
 
   def create
@@ -21,6 +22,8 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:name, :email, :password,
-                                 :password_confirmation)
+                                 :password_confirmation,
+                                 :provider, :uid, :oauth_token, :oauth_expires_at)
   end
+
 end

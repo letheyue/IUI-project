@@ -37,6 +37,12 @@ gem 'jbuilder', '~> 2.5'
 # Use oauth2 for accessing yelp API
 gem 'oauth2', '~> 1.2'
 
+# Use omniauth-facebook for facebook login support
+gem 'omniauth-facebook'
+
+# Use omniauth-google-oauth2 for google login support
+gem 'omniauth-google-oauth2'
+
 # Enable Haml views
 gem 'haml'
 
