@@ -23,6 +23,9 @@ gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+# For using MySQL through ActiveRecord
+gem 'mysql2'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -45,6 +48,9 @@ gem 'omniauth-google-oauth2'
 
 # Enable Haml views
 gem 'haml'
+
+# Simple_form
+gem 'simple_form'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

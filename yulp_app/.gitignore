@@ -22,3 +22,4 @@
 
 # Ignore Gemfile.lock
 Gemfile.lock
+config/password.yml

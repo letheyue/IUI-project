@@ -1,0 +1,61 @@
+1. Check if 'brew' is installed (by typing brew in terminal)
+To install, command:
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null 2> /dev/null
+
+2. Install MySQL
+homebrew install mysql
+
+(Start mysql as a service:) brew services start mysql
+(if you want to end mysql, try:) brew services stop mysql
+
+You have another option for controlling mysql server, which is:
+mysql.server start
+mysql.server stop
+
+Either way will work, but you should only use 1 option.
+
+3. You might need these extra steps to reset the root password for mysql server:
+  mysqld --skip-grant-tables &
+  mysql
+  FLUSH PRIVILEGES;
+  SET PASSWORD FOR 'root'@'localhost' = PASSWORD('yourpassword');
+
+4. Login to the MySQL console:
+mysql -h localhost -u root -p
+
+
+5. Rails website settings
+After the above workflow, you will have your mysql server fully functional in your local.
+Then add a new file 'password.yml' to your config folder with the following content:
+
+
+defaults: &defaults
+  mysql:
+    username: root
+    password: yourpassword
+
+
+development:
+  <<: *defaults
+
+
+integration:
+  <<: *defaults
+
+
+production:
+  <<: *defaults
+
+6. Run:
+rake db:reset
+rails db:migrate
+rails s
+
+will work.
+
+7. Also, if you want to get rid of mysql command line, you can choose a MySQL GUI (for example, Sequel Pro)
+to help better alternative view of data.
+
+
+
+
