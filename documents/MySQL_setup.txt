@@ -3,7 +3,7 @@ To install, command:
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null 2> /dev/null
 
 2. Install MySQL
-homebrew install mysql
+brew install mysql
 
 (Start mysql as a service:) brew services start mysql
 (if you want to end mysql, try:) brew services stop mysql

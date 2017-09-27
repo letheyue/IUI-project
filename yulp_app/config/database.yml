@@ -38,5 +38,9 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  database: IUI-project_production
+  username: IUI-project
+  password: <%= ENV['DBINTERFACE_DATABASE_PASSWORD'] %>
