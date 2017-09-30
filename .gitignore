@@ -6,4 +6,5 @@
 
 # ignore bundle folder
 .bundle/
+yulp_app/config/password.yml
 

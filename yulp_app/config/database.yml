@@ -1,8 +1,8 @@
 <%
-  PW_CONFIG = YAML.load_file(Rails.root.join('config/password.yml'))[Rails.env]
-  dev_db_credentials = {}
-  dev_db_credentials[:username] = PW_CONFIG['mysql']['username']
-  dev_db_credentials[:password] = PW_CONFIG['mysql']['password']
+    PW_CONFIG = YAML.load_file(Rails.root.join('config/password.yml'))[Rails.env]
+    dev_db_credentials = {}
+    dev_db_credentials[:username] = PW_CONFIG['mysql']['username']
+    dev_db_credentials[:password] = PW_CONFIG['mysql']['password']
 %>
 
 # SQLite version 3.x
@@ -12,16 +12,17 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: sqlite3
-  pool: 5
-  timeout: 5000
+#  adapter: sqlite3
+#  pool: 5
+#  timeout: 5000
 
 development:
 #  <<: *default
 #  database: db/development.sqlite3
+
   adapter: mysql2
   encoding: utf8
-  database: test_db
+  database: dev_db
   pool: 5
   timeout: 1000
   username: <%= dev_db_credentials[:username] %>
@@ -34,8 +35,15 @@ development:
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  <<: *default
-  database: db/test.sqlite3
+  adapter: mysql2
+  encoding: utf8
+  database: test_db
+  pool: 5
+  timeout: 1000
+  username: <%= dev_db_credentials[:username] %>
+  password: '<%= dev_db_credentials[:password] %>'
+  host: localhost
+  port: 8192
 
 production:
   adapter: postgresql

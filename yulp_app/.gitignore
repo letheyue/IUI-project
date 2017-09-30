@@ -22,4 +22,5 @@
 
 # Ignore password file
 #Gemfile.lock
-config/password.yml
+#config/password.yml
+*.DS_Store
