@@ -1,0 +1,2 @@
+$ ->
+  alert('Pipeline Js Applied')
