@@ -1,0 +1,14 @@
+%h1 Sample popular times for Business
+%p From Monday to Sunday
+
+.row
+  .col-sm-12
+    -@result_hash.each_slice(2) do |works|
+      .row
+        -works.each do |name, one_place_result|
+          .col-sm-6
+            %p Popular times for #{name}:
+            -one_place_result.each do |day, bars|
+              %p #{day}
+              %p=column_chart(bars, download: true)
+

@@ -39,6 +39,13 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# Used for parsing HTML documents
+gem 'watir'
+# Used for parsing HTML documents
+gem 'nokogiri'
+# Used for simple bar-drawing
+gem 'chartkick'
+
 # Use oauth2 for accessing yelp API
 gem 'oauth2', '~> 1.2'
 

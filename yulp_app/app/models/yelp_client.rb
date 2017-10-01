@@ -27,8 +27,5 @@ class YelpClient < ApplicationRecord
     json_object.parsed
   end
 
-  #
-
-
 
 end
