@@ -1,0 +1,8 @@
+class BusinessTrain < ApplicationRecord
+
+
+
+
+
+
+end
