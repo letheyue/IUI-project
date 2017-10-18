@@ -64,7 +64,11 @@ class GoogleClient
     # byebug
     popular_times_block = html.at_css('div[aria-hidden=false]').parent
     popular_times_block.children.each_with_index do |daily_time_block, index|
-      daily_bar_graph_block = daily_time_block.children[2]
+      if daily_time_block.attributes["aria-hidden"].value == 'true'
+        daily_bar_graph_block = daily_time_block.children[1]
+      else
+        daily_bar_graph_block = daily_time_block.children[2]
+      end
       daily_bars = []
       daily_bar_graph_block.children.each do |bar|
         height = bar.attributes['style']
