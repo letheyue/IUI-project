@@ -6,7 +6,13 @@ class Review < ApplicationRecord
   belongs_to :restaurant
 
   # The method is to get review from yelp review api and store the reviews in each restaurant
-  def self.getReview
+  def self.get_review_once
+
+    @fetched ||= Review.all.present?
+    if @fetched
+      return
+    end
+
     Restaurant.all.each do |rest|
       id = rest.name_id
 
@@ -24,5 +30,7 @@ class Review < ApplicationRecord
         review.save
       end
     end
+
+    @fetched = true
   end
 end

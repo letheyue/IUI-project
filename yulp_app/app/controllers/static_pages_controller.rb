@@ -8,7 +8,6 @@ class StaticPagesController < ApplicationController
     # food_result_for_college_station = YelpClient.search({})
     # render json:food_result_for_college_station
     # byebug
-
   end
 
   def help
@@ -33,25 +32,10 @@ class StaticPagesController < ApplicationController
       @result_hash[name] = one_place_result
     end
 
-
-    # result = GoogleClient.get_popular_times("Gary Danko","800 N Point St")
-    # result = GoogleClient.get_popular_times("buffalo wild wings","903 University Dr E")
-    # result = GoogleClient.get_popular_times("red lobster","1200 University Dr E")
-    # result.each do |day, times|
-    #   hash_times = Hash.new
-    #   times.each_with_index do |times, index|
-    #     hash_times[index+7] = times
-    #   end
-    #   @result_hash[day] = hash_times
-    # end
-
   end
 
   def contact
-
-    # Used to test creation of restaurants
-    # Restaurant.setup_table
+    # Used to test db setup
     SetupDbJob.perform_later
-
   end
 end
