@@ -5,8 +5,8 @@ require 'google_client.rb'
 class StaticPagesController < ApplicationController
   def home
 
-    food_result_for_college_station = YelpClient.search({})
-    render json:food_result_for_college_station
+    # food_result_for_college_station = YelpClient.search({})
+    # render json:food_result_for_college_station
     byebug
 
   end
@@ -15,9 +15,10 @@ class StaticPagesController < ApplicationController
     # Used to test the crawler function for fetching popular times
 
     places = Hash.new
-    places["Gary Danko"] ="800 N Point St"
-    places["buffalo wild wings"] ="903 University Dr E"
-    places["red lobster"] = "1200 University Dr E"
+    # places["Gary Danko"] ="800 N Point St"
+    # places["buffalo wild wings"] ="903 University Dr E"
+    # places["red lobster"] = "1200 University Dr E"
+    places["Centro American Restaurant Pupuseria & Pupuseria"] = "317 Dominik Dr"
     @result_hash = Hash.new
 
     GoogleClient.get_all_popular_times(places).each do |name, result|
@@ -47,5 +48,10 @@ class StaticPagesController < ApplicationController
   end
 
   def contact
+
+    # Used to test creation of restaurants
+    Restaurant.setupTable
+
+
   end
 end

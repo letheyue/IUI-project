@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20171019011900) do
+ActiveRecord::Schema.define(version: 20171019023252) do
 
   create_table "business_trains", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -32,7 +31,7 @@ ActiveRecord::Schema.define(version: 20171019011900) do
     t.string   "url"
     t.string   "review_count"
     t.string   "categories"
-    t.float    "rating",       limit: 24
+    t.float    "rating",        limit: 24
     t.string   "coordinates"
     t.string   "price"
     t.string   "address"
@@ -41,10 +40,10 @@ ActiveRecord::Schema.define(version: 20171019011900) do
     t.string   "country"
     t.string   "state"
     t.string   "phone"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.string   "name_id"
-
+    t.text     "popular_times", limit: 65535
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

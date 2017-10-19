@@ -1,12 +1,16 @@
 require 'yelp_client.rb'
+require 'google_client.rb'
 
 class Restaurant < ActiveRecord::Base
   self.table_name = "restaurants"
 
   @whole_information = YelpClient.search({})
 
-  #byebug
 
+  # Note:
+  #   address can be nil
+  #   popular_times can be nil
+  #   each element in popular_times Hash can be nil
   def self.setupTable
     name_ids = Restaurant.name_id
     names = Restaurant.name
@@ -23,6 +27,10 @@ class Restaurant < ActiveRecord::Base
     countries = Restaurant.country
     states = Restaurant.state
     phones = Restaurant.phone
+
+    byebug
+    popular_times = Restaurant.get_all_popular_times(names, addresses)
+
 
     @size = @whole_information["businesses"].size
     i = 0
@@ -43,6 +51,9 @@ class Restaurant < ActiveRecord::Base
       restaurant.country = countries.at(i)
       restaurant.state = states.at(i)
       restaurant.phone = phones.at(i)
+
+      restaurant.popular_times = popular_times.at(i)
+
 
       restaurant.save
       i = i + 1
@@ -252,6 +263,25 @@ class Restaurant < ActiveRecord::Base
     end
     state
   end
+
+  def self.get_all_popular_times(names, addresses)
+    places = names.zip(addresses).to_h
+    # byebug
+    result_array = Array.new
+    GoogleClient.get_all_popular_times(places).each do |name, result|
+      one_place_result = Hash.new
+      result.each do |day, times|
+        hash_times = Hash.new
+        times.each_with_index do |times, index|
+          hash_times[(index+7).modulo(24)] = times
+        end
+        one_place_result[day] = hash_times
+      end
+      result_array << one_place_result
+    end
+    result_array
+  end
+
 
   def learn()
 
