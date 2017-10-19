@@ -1,5 +1,7 @@
+
 require 'oauth2'
 require 'net/http'
+require "erb"
 
 class YelpClient < ApplicationRecord
 
@@ -29,6 +31,15 @@ class YelpClient < ApplicationRecord
 
   end
 
+  # This method implements as the wrapper of Reviews API
+  def self.review(id)
+    token_from_yelp = generate_token
+    url = 'v3/businesses/' + id + '/reviews'
+    uri = ERB::Util.url_encode(url)
+    #uri = Addressable::URI.parse(url)
+    json_object = client.request(:get, uri, :headers => {Authorization: "Bearer #{token_from_yelp.token}"})
+    json_object.parsed
+  end
 
   def self.business(filter_hash)
     whole_json = YelpClient.search({})

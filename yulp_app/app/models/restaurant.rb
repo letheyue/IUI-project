@@ -1,7 +1,10 @@
+
 require 'yelp_client.rb'
 require 'google_client.rb'
 
 class Restaurant < ActiveRecord::Base
+  has_many :reviews
+
   self.table_name = "restaurants"
 
   @whole_information = YelpClient.search({})

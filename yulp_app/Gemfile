@@ -61,6 +61,9 @@ gem 'haml'
 # Simple_form
 gem 'simple_form'
 
+# a replacement for the URI implementation
+# gem 'addressable'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

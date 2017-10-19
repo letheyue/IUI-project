@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171019023252) do
+ActiveRecord::Schema.define(version: 20171019152329) do
 
   create_table "business_trains", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -47,6 +47,19 @@ ActiveRecord::Schema.define(version: 20171019023252) do
     t.index ["name_id"], name: "index_restaurants_on_name_id", unique: true, using: :btree
   end
 
+  create_table "reviews", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.float    "rating",         limit: 24
+    t.string   "user_image_url"
+    t.string   "user_name"
+    t.text     "text",           limit: 65535
+    t.string   "time_created"
+    t.string   "review_url"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.integer  "restaurant_id"
+    t.index ["restaurant_id"], name: "index_reviews_on_restaurant_id", using: :btree
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.string   "email"
@@ -61,4 +74,5 @@ ActiveRecord::Schema.define(version: 20171019023252) do
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
+  add_foreign_key "reviews", "restaurants"
 end
