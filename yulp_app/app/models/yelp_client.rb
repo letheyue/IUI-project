@@ -35,39 +35,21 @@ class YelpClient < ApplicationRecord
   def self.review(id)
     token_from_yelp = generate_token
     url = 'v3/businesses/' + id + '/reviews'
+    # transfer the name_id to ascii
     uri = ERB::Util.url_encode(url)
     #uri = Addressable::URI.parse(url)
     json_object = client.request(:get, uri, :headers => {Authorization: "Bearer #{token_from_yelp.token}"})
     json_object.parsed
   end
 
-  def self.business(filter_hash)
-    whole_json = YelpClient.search({})
+  def self.business(id)
     token_from_yelp = generate_token
-    index = 0
-    hash = Hash.new
+    url = 'v3/businesses/' + id
+    uri = ERB::Util.url_encode(url)
+    #uri = Addressable::URI.parse(url)
+    json_object = client.request(:get, uri, :headers => {Authorization: "Bearer #{token_from_yelp.token}"})
+    json_object.parsed
 
-    whole_json["businesses"].each do |element|
-      id = element["id"]
-      uri = 'https://api.yelp.com/v3/businesses/' + id
-
-      json_object = client.request(:get, uri, :headers => {Authorization: "Bearer #{token_from_yelp.token}"})
-      json = json_object.parsed
-
-      hours = json["hours"]
-      week_hour = Hash.new
-      hours["open"].each do |d|
-        start_end_hour = Hash.new
-        start_end_hour["start"] = d["start"]
-        start_end_hour["end"] = d["end"]
-        week_hour[d["day"]] = start_end_hour
-      end
-
-      hash["" + index] = week_hour
-      index = index + 1
-    end
-
-    hash
   end
 
 

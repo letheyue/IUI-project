@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171019152329) do
+ActiveRecord::Schema.define(version: 20171019191344) do
 
   create_table "business_trains", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20171019152329) do
     t.datetime "updated_at",                  null: false
     t.string   "name_id"
     t.text     "popular_times", limit: 65535
-    t.index ["name_id"], name: "index_restaurants_on_name_id", unique: true, using: :btree
+    t.text     "open_hour",     limit: 65535
   end
 
   create_table "reviews", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

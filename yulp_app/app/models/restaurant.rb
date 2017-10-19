@@ -115,12 +115,46 @@ class Restaurant < ActiveRecord::Base
 
         restaurant.popular_times = popular_times[restaurant.name]
 
+        restaurant.open_hour = Restaurant.add_open_hour(business["id"])
+
         restaurant.save!
       end
 
     end
 
     @fetched = true
+  end
+
+  def self.add_open_hour(id)
+    hash = YelpClient.business(id)
+    open_hour = Hash.new
+    hash["hours"][0]["open"].each do |day|
+      s = day["day"]
+      if (s == 0)
+        d = 'Monday'
+      end
+      if (s == 1)
+        d = 'Tuesday'
+      end
+      if (s == 2)
+        d = 'Wednesday'
+      end
+      if (s == 3)
+        d = 'Thursday'
+      end
+      if (s == 4)
+        d = 'Friday'
+      end
+      if (s == 5)
+        d = 'Saturday'
+      end
+      if (s == 6)
+        d = 'Sunday'
+      end
+
+      open_hour[d] = 'start_time: ' + day["start"] + ' ' + 'close_time: ' + day["end"]
+    end
+    open_hour
   end
 
 end
