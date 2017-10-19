@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20171019023252) do
     t.datetime "updated_at",                  null: false
     t.string   "name_id"
     t.text     "popular_times", limit: 65535
+    t.index ["name_id"], name: "index_restaurants_on_name_id", unique: true, using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

@@ -25,7 +25,7 @@ class GoogleClient
 
     prefix = 'https://www.google.com/search?&q='
     browser = Watir::Browser.new :chrome
-    browser.window.move_to(3000, 2000)
+    # browser.window.move_to(3000, 2000)
 
     name_location_hash.each do |name, location|
       query_terms = parse_whitespace(name) + parse_whitespace(location)

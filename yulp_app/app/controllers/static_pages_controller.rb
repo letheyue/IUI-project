@@ -7,7 +7,7 @@ class StaticPagesController < ApplicationController
 
     # food_result_for_college_station = YelpClient.search({})
     # render json:food_result_for_college_station
-    byebug
+    # byebug
 
   end
 
@@ -50,8 +50,8 @@ class StaticPagesController < ApplicationController
   def contact
 
     # Used to test creation of restaurants
-    Restaurant.setupTable
-
+    # Restaurant.setup_table
+    SetupDbJob.perform_later
 
   end
 end
