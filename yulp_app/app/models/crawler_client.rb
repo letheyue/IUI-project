@@ -95,12 +95,21 @@ class CrawlerClient
 
   def self.filter_popular_times(html)
     result = {}
+    popular_times_block = nil
     # byebug
     if html.at_css('div[aria-hidden=false]').nil?
       return result
     else
-      popular_times_block = html.at_css('div[aria-hidden=false]').parent
+      html.css('div[aria-hidden=false]').each do |today_diagram|
+        if today_diagram.parent.children.size == 7
+          popular_times_block = today_diagram.parent
+        end
+      end
+      if popular_times_block.nil?
+        return result
+      end
     end
+    # popular_times_block = html.at_css('div[aria-hidden=false]').parent
 
     popular_times_block.children.each_with_index do |daily_time_block, index|
       if daily_time_block.attributes["aria-hidden"].value == 'true'

@@ -18,7 +18,8 @@ class StaticPagesController < ApplicationController
     # places["Gary Danko"] ="800 N Point St"
     # places["buffalo wild wings"] ="903 University Dr E"
     # places["red lobster"] = "1200 University Dr E"
-    places["Centro American Restaurant Pupuseria & Pupuseria"] = "317 Dominik Dr"
+    places["Razzoo's Cajun Cafe"] = "820 University Dr E"
+    # places["Centro American Restaurant Pupuseria & Pupuseria"] = "317 Dominik Dr"
     @result_hash = Hash.new
 
     CrawlerClient.get_all_popular_times(places).each do |name, result|
