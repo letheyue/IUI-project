@@ -1,5 +1,5 @@
 require 'yelp_client.rb'
-require 'google_client.rb'
+require 'crawler_client.rb'
 
 
 class StaticPagesController < ApplicationController
@@ -20,7 +20,7 @@ class StaticPagesController < ApplicationController
     places["Centro American Restaurant Pupuseria & Pupuseria"] = "317 Dominik Dr"
     @result_hash = Hash.new
 
-    GoogleClient.get_all_popular_times(places).each do |name, result|
+    CrawlerClient.get_all_popular_times(places).each do |name, result|
       one_place_result = Hash.new
       result.each do |day, times|
         hash_times = Hash.new
