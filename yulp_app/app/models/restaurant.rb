@@ -136,12 +136,12 @@ class Restaurant < ActiveRecord::Base
         restaurant = current_instance
       else
         restaurant.name = business["name"]
-        restaurant.image_url = business["image_url"]
-        restaurant.url = business["url"]
-        restaurant.review_count = business["review_count"]
+        restaurant.image_url = business["image_url"] || ''
+        restaurant.url = business["url"] || ''
+        restaurant.review_count = business["review_count"] || ''
         restaurant.rating = business["rating"]
-        restaurant.phone = business["phone"]
-        restaurant.price = business["price"]
+        restaurant.phone = business["phone"] || ''
+        restaurant.price = business["price"] || ''
 
         coordinate = Array.new
         coordinate << business["coordinates"]["latitude"]
