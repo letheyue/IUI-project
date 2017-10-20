@@ -1,9 +1,11 @@
 
 require 'yelp_client.rb'
-require 'restaurant.rb'
+# require 'restaurant.rb'
 
 class Review < ApplicationRecord
   belongs_to :restaurant
+
+  self.table_name = "reviews"
 
   # The method is to get review from yelp review api and store the reviews in each restaurant
   def self.get_review_once
