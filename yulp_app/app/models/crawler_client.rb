@@ -8,29 +8,21 @@ class CrawlerClient
   def self.get_all_discount_info(name_location_hash)
     result = {}
 
-    prefix = 'https://www.google.com/search?&q='
-    browser = Watir::Browser.new :chrome
-    # browser.window.move_to(3000, 2000)
-
-    name_location_hash.each do |name, location|
-      query_terms = parse_whitespace(name) + parse_whitespace(location)
-      query_parsed = ''
-      query_terms.each do |term|
-        query_parsed += term
-        query_parsed += '+'
+    random = Random.new(1234)
+    name_location_hash.each do |name, _|
+      random_number = random.rand(100)
+      if random_number < 60
+        discount = 0
+      elsif random_number < 85
+        discount = 10
+      elsif random_number < 95
+        discount = 20
+      else
+        discount = 40
       end
-      search_url = prefix + query_parsed
-      browser.goto search_url
-      sleep(3)
-      doc = Nokogiri::HTML.parse(browser.html)
-      # browser.close if browser
-
-      popular_times = filter_popular_times(doc)
-      result[name] = popular_times
+      result[name] = discount
     end
-    browser.close if browser
     result
-
   end
 
   # Document for this method:
@@ -139,6 +131,7 @@ class CrawlerClient
     return Array.new if str.nil?
     str.gsub(/\s+/m, ' ').gsub(/^\s+|\s+$/m, '').split(' ')
   end
+
 
   def self.convert_to_days(index)
     case index

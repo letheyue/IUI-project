@@ -100,6 +100,12 @@ class Restaurant < ActiveRecord::Base
     result_hash
   end
 
+  def self.get_all_discount_info(names, addresses)
+    places = names.zip(addresses).to_h
+    CrawlerClient.get_all_discount_info(places)
+  end
+
+
   # Note: This function will only fetch data once
   # Then create the Restaurant & Categories table
   #   address can be nil
@@ -115,6 +121,7 @@ class Restaurant < ActiveRecord::Base
     names = Restaurant.name
     addresses = Restaurant.address
     popular_times = Restaurant.get_all_popular_times(names, addresses)
+    discounts = Restaurant.get_all_discount_info(names, addresses)
 
     @business.each do |business|
 
@@ -146,6 +153,7 @@ class Restaurant < ActiveRecord::Base
         restaurant.state = location["state"]
 
         restaurant.popular_times = popular_times[restaurant.name]
+        restaurant.discount = discounts[restaurant.name]
 
         restaurant.open_hour = Restaurant.add_open_hour(business["id"])
 
