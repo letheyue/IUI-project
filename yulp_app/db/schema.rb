@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171020151421) do
+ActiveRecord::Schema.define(version: 20171025180932) do
 
   create_table "business_trains", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -66,7 +66,9 @@ ActiveRecord::Schema.define(version: 20171020151421) do
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
     t.integer  "restaurant_id"
+    t.integer  "user_id"
     t.index ["restaurant_id"], name: "index_reviews_on_restaurant_id", using: :btree
+    t.index ["user_id"], name: "index_reviews_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -84,4 +86,5 @@ ActiveRecord::Schema.define(version: 20171020151421) do
   end
 
   add_foreign_key "reviews", "restaurants"
+  add_foreign_key "reviews", "users"
 end

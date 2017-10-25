@@ -4,6 +4,7 @@ require 'yelp_client.rb'
 
 class Review < ApplicationRecord
   belongs_to :restaurant
+  belongs_to :user
 
   self.table_name = "reviews"
 
@@ -18,6 +19,8 @@ class Review < ApplicationRecord
     Restaurant.all.each do |rest|
       id = rest.name_id
 
+      default_user_id = (User.find_by name: 'admin').id
+
       hash = YelpClient.review(id)
       hash["reviews"].each do |r|
         review = Review.new
@@ -28,7 +31,7 @@ class Review < ApplicationRecord
         review.time_created = r["time_created"]
         review.review_url = r["url"]
         review.restaurant_id = rest.id
-
+        review.user_id = default_user_id
         review.save
       end
     end

@@ -23,7 +23,7 @@ class YelpClient < ApplicationRecord
   def self.search(filter_hash)
     token_from_yelp = generate_token
     json_object = client.request(:get, 'v3/businesses/search', :headers => {Authorization: "Bearer #{token_from_yelp.token}"},
-                   :params => {:location => '77840', :term => 'food', :limit => 50} )
+                   :params => {:location => '77840', :term => 'food', :limit => 3} )
     # TODO: No error handling in case of wrong input
     # This parsed JSON object has three keys, namely 'total', 'businesses', 'region'
     # Reference on the meaning of keys: https://www.yelp.com/developers/documentation/v3/business_search

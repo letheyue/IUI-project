@@ -5,6 +5,7 @@ require 'category.rb'
 
 class Restaurant < ActiveRecord::Base
   has_many :reviews
+  has_many :users, through: :reviews
   has_and_belongs_to_many :categories
 
   self.table_name = "restaurants"
