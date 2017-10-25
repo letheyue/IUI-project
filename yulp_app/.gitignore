@@ -24,3 +24,7 @@
 #Gemfile.lock
 #config/password.yml
 *.DS_Store
+
+node_modules/
+test/
+
