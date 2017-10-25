@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20171020151421) do
     t.text     "popular_times", limit: 65535
     t.text     "open_hour",     limit: 65535
     t.integer  "discount"
+    t.index ["name_id"], name: "index_restaurants_on_name_id", unique: true, using: :btree
   end
 
   create_table "reviews", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
