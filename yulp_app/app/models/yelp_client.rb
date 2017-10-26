@@ -23,12 +23,24 @@ class YelpClient < ApplicationRecord
   def self.search(filter_hash)
     token_from_yelp = generate_token
     json_object = client.request(:get, 'v3/businesses/search', :headers => {Authorization: "Bearer #{token_from_yelp.token}"},
-                   :params => {:location => '77840', :term => 'food', :limit => 3} )
+                   :params => {:location => '77840', :term => 'food', :limit => 50} )
     # TODO: No error handling in case of wrong input
     # This parsed JSON object has three keys, namely 'total', 'businesses', 'region'
     # Reference on the meaning of keys: https://www.yelp.com/developers/documentation/v3/business_search
-    json_object.parsed
-
+    # byebug
+    result = json_object.parsed
+    total_businesses = result['total']
+    cur_offset = 50
+    while cur_offset < total_businesses
+      new_json_object = client.request(:get, 'v3/businesses/search',
+                                       :headers => {Authorization: "Bearer #{token_from_yelp.token}"},
+                                       :params =>
+                                           {:location => '77840', :term => 'restaurant', :offset => cur_offset, :limit => 50})
+      result['businesses'] = result['businesses'] + new_json_object.parsed['businesses']
+      cur_offset += 50
+      # byebug
+    end
+    result
   end
 
   # This method implements as the wrapper of Reviews API
