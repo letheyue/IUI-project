@@ -52,6 +52,9 @@ class YelpClient < ApplicationRecord
     #uri = Addressable::URI.parse(url)
     json_object = client.request(:get, uri, :headers => {Authorization: "Bearer #{token_from_yelp.token}"})
     json_object.parsed
+  rescue Exception => ex
+    logger.fatal(ex)
+    return {}
   end
 
   def self.business(id)
@@ -61,7 +64,9 @@ class YelpClient < ApplicationRecord
     #uri = Addressable::URI.parse(url)
     json_object = client.request(:get, uri, :headers => {Authorization: "Bearer #{token_from_yelp.token}"})
     json_object.parsed
-
+  rescue Exception => ex
+    logger.fatal(ex)
+    return {}
   end
 
 

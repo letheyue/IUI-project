@@ -22,6 +22,7 @@ class Review < ApplicationRecord
       default_user_id = (User.find_by name: 'admin').id
 
       hash = YelpClient.review(id)
+
       hash["reviews"].each do |r|
         review = Review.new
         review.rating = r["rating"]
