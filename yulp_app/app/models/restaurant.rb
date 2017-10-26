@@ -36,15 +36,18 @@ class Restaurant < ActiveRecord::Base
     address = Array.new(@size)
     index = 0
     @business.each do |a|
-      hash = a["location"]
-      if (hash["address1"] != "" && hash["address1"] != nil)
-        address[index] = hash["address1"] + " "
-      end
-      if (hash["address2"] != "" && hash["address2"] != nil)
-        address[index] = address[index] + hash["address2"] + " "
-      end
-      if (hash["address3"] != "" && hash["address3"] != nil)
-        address[index] = address[index] + hash["address3"]
+      hash = a['location']
+      address[index] = ''
+      unless hash.nil?
+        unless hash['address1'].nil?
+          address[index] += hash['address1'] + ' '
+        end
+        unless hash['address2'].nil?
+          address[index] += hash['address2'] + ' '
+        end
+        unless hash['address3'].nil?
+          address[index] += hash['address3'] + ' '
+        end
       end
       index = index + 1
     end
