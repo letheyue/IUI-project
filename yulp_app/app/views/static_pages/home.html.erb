@@ -2,7 +2,6 @@
   <h1>Welcome to the Yulp App</h1>
   <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
 </div>
-
 <html>
 <%= render 'layouts/header' %>
 <body>
@@ -15,7 +14,7 @@
             <%@name = "slides"+i.to_s%>
             <div class="mySlides" name = <%="#@name"%> >
               <div class="numbertext"><%= i%></div>
-              <img src= <%="#@image_src" %> style="height:120px;width:120px">
+              <img src= <%="#@image_src"%> style="height:120px;width:120px">
             </div>
             <div class="mySlides" name = <%="#@name"%> >
               <div class="numbertext"><%= i%></div>
@@ -39,7 +38,7 @@
         <%= @idname %>
         <% @location = "SafeHouse+Chicago,60+E+Ontario+St+Chicago,IL+60611"
            @address = "https://www.google.com/maps/embed/v1/place?key=AIzaSyC1crIIEC4So_FjEGhQ2QX1W9dc7eeM2Ds&q=" + @location%>
-        <button type="button" class="btn collapsed" data-toggle="collapse" data-target=<%="##@idname"%>></button>
+        <button type="button" class="mybtn collapsed" data-toggle="collapse" data-target=<%="##@idname"%>></button>
         <div id= <%="#@idname"%>  class="collapse">
           <div>
             <div class = "map">

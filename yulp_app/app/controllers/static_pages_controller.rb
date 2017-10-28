@@ -8,7 +8,8 @@ class StaticPagesController < ApplicationController
     # render json:food_result_for_college_station
 
     # Used to test db setup
-    SetupDbJob.perform_later
+    # We use seed.rb to generate data, so skip this
+    # SetupDbJob.perform_later
   end
 
   def help

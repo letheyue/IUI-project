@@ -51,22 +51,26 @@ input[type=text]:focus {
   width: 100%;
 }
 
-.btn:after {
+.mybtn{
+  background-color: #ffffff;
+  width: 100%
+}
+
+.mybtn:after {
   font-family: "Glyphicons Halflings";
   color: #B00100;
   content: "\e113" ;
 }
 /* Icon when the collapsible content is hidden */
-.btn.collapsed:after {
+.mybtn.collapsed:after {
   color: #B00100;
 
   content: "\e114";
 }
-.btn{
+.mybtn{
   background-color: #ffffff;
   width: 100%
 }
-
 .displaygraph{
   float: right;
 }
