@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   get 'users/new'
 
+  get 'restaurants/show'
+
   root 'static_pages#home'
 
   get 'static_pages/contact'
