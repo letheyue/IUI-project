@@ -1,0 +1,20 @@
+Yulp user preferences design
+
+-restaurant
+
+price(* ones are something Yelp doesn't have)
+*have coupon
+rating
+popularity(reviews number)
+distance
+*crowded
+*type(Chinese, Japanese?)
+open now
+more features   =>  https://imgur.com/a/xoEsg
+
+
+-UI
+restaurants displaying number in one page
+what details to display(coupon,price etc.)
+how to display (list, app, animate character like clippy？?)
+how to sort restaurants
