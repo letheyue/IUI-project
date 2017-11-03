@@ -50,26 +50,27 @@ input[type=text] {
 input[type=text]:focus {
   width: 100%;
 }
-
+.checked {
+  color: orange;
+}
 .mybtn{
-  background-color: #ffffff;
-  width: 100%
+  background-color: transparent;
+  width: 100%;
+  border: none;
+  outline: none;
 }
 
 .mybtn:after {
   font-family: "Glyphicons Halflings";
   color: #B00100;
   content: "\e113" ;
+  border: none;
 }
 /* Icon when the collapsible content is hidden */
 .mybtn.collapsed:after {
   color: #B00100;
-
+  border: none;
   content: "\e114";
-}
-.mybtn{
-  background-color: #ffffff;
-  width: 100%
 }
 .displaygraph{
   float: right;
@@ -82,8 +83,8 @@ input[type=text]:focus {
 
 /* Slideshow container */
 .slideshow-container {
-  width: 120px;
-  height: 120px;
+  width: 150px;
+  height: 150px;
   position: relative;
   margin: auto;
 }
@@ -96,7 +97,7 @@ input[type=text]:focus {
   top: 50%;
   width: auto;
 
-  margin-top: -14px;
+  margin-top: -10px;
   color: white;
   font-weight: bold;
   font-size: 18px;
@@ -154,4 +155,31 @@ input[type=text]:focus {
 @keyframes fade {
   from {opacity: .4}
   to {opacity: 1}
+}
+.reviews{
+  padding: 10px;
+  width:340px;
+}
+.reviewcontainer{
+  width: 320px;
+  height: 300px;
+  overflow: scroll;
+}
+#scrlBtn {
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  bottom: 20px; /* Place the button at the bottom of the page */
+  right: 30px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  background-color: red; /* Set a background color */
+  color: white; /* Text color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  padding: 15px; /* Some padding */
+  border-radius: 10px; /* Rounded corners */
+}
+
+#scrlBtn:hover {
+  background-color: #555; /* Add a dark-grey background on hover */
 }
