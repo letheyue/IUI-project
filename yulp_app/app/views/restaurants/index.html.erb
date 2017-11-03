@@ -1,0 +1,85 @@
+<!--Example use of Asset pipeline:-->
+<%= javascript_include_tag 'restaurants/index' %>
+
+
+
+<%for i in 0..4%>
+    <div class = "container">
+      <div class="ResTitle">
+        <div class="displaygraph">
+          <%@image_src = @restaurant[i][:image_url] %>
+          <div class="slideshow-container">
+            <%@name = "slides"+i.to_s%>
+            <div class="mySlides" name = <%="#@name"%> >
+              <div class="numbertext"><%= i%></div>
+              <img src= <%="#@image_src"%> style="height:120px;width:120px">
+            </div>
+
+
+
+            <div>
+              <a class="prev" onclick="plusSlides(-1, <%= i%>)">&#10094;</a>
+              <a class="next" onclick="plusSlides(1, <%= i%>)">&#10095;</a>
+            </div>
+          </div>
+        </div>
+        <h2>
+          <div>  <%= @restaurant[i][:name] %></div>
+        </h2>
+        <%  @idname = "toggle"+ i.to_s%>
+        <h4><%= @restaurant[i][:address]  %>  /  Rating : <%= @restaurant[i][:rating] %></h4>
+        <% @location = @restaurant[i][:name].tr(" ", "+") + "," + @restaurant[i][:address].tr(" ", "+")
+           @address = "https://www.google.com/maps/embed/v1/place?key=AIzaSyC1crIIEC4So_FjEGhQ2QX1W9dc7eeM2Ds&q=" + @location%>
+        <button type="button" class="mybtn collapsed" data-toggle="collapse" data-target=<%="##@idname"%>></button>
+        <div id= <%="#@idname"%>  class="collapse">
+          <p>
+            <div class = "map">
+              <iframe
+              width="300"
+              height="300"
+              frameborder="0" style="border:0"
+              src=<%="#@address"%> allowfullscreen>
+              </iframe>
+            </div>
+            <h3>Other Details</h3>
+            Discount : <%= @restaurant[i][:discount] %><br/>
+            Popular times: <%= @restaurant[i][:popular_times] %>
+          <br>lol
+          <%= @restaurant[i][:popular_times][6] %>
+         </div>
+        </div>
+      </div>
+    </div>
+
+<%end%>
+<script>
+    var slideIndex = 1;
+    for(var k = 0; k < 5; k++) {
+        showSlides(slideIndex, k);
+    }
+
+    function plusSlides(n, id) {
+        showSlides(slideIndex += n, id);
+    }
+
+    function currentSlide(n, id) {
+        showSlides(slideIndex = n, id);
+    }
+
+    function showSlides(n, id) {
+        var i;
+        var name = "slides" + id
+        var slides = document.getElementsByName(name);
+        if (n > slides.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+
+        slides[slideIndex-1].style.display = "block";
+    }
+</script>
+</body>
+</html>
+
+

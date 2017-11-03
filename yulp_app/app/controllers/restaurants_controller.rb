@@ -4,7 +4,10 @@ class RestaurantsController < ApplicationController
 
   end
 
+  def index
+    @restaurant = Restaurant.all
 
+  end
 
 
 
