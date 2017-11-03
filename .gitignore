@@ -8,3 +8,4 @@
 .bundle/
 yulp_app/config/password.yml
 yulp_app/node_modules/
+yulp_app/public/assets/

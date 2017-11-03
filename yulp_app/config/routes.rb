@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   get 'users/new'
 
+  get 'restaurants/show'
+
   root 'static_pages#home'
 
   get 'static_pages/contact'
@@ -19,6 +21,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   resources :users
+  resources :restaurants
 
   resources :sessions, only: [:create, :destroy]
   # facebook login & google login
