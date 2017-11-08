@@ -1,4 +1,5 @@
 <%= javascript_include_tag 'restaurants/index' %>
+<%= stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" %>
 
 <%- @restaurant.each_with_index do |restaurant, i| %>
     <div class = "container">
@@ -24,7 +25,13 @@
           <div><%= restaurant[:name] %></div>
         </h2>
         <%- id_name = "toggle"+ i.to_s%>
-        <h4><%= restaurant[:address]  %>  /  Rating : <%= restaurant[:rating] %></h4>
+        <h4><%= restaurant[:address]  %>  /  Rating : <%= restaurant[:rating] %>
+          <span class=<%if restaurant[:rating] >= 1 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></span>
+                     <span class=<%if restaurant[:rating] >= 2 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></span>
+                     <span class=<%if restaurant[:rating] >= 3 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></span>
+                     <span class=<%if restaurant[:rating] >= 4 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></span>
+                     <span class=<%if restaurant[:rating] >= 5 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></span>
+        </h4>
         <% location = restaurant[:name].tr(" ", "+") + "," + restaurant[:address].tr(" ", "+")
            address = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyC1crIIEC4So_FjEGhQ2QX1W9dc7eeM2Ds&q=' + location%>
         <button type="button" class="mybtn collapsed" data-toggle="collapse" data-target=<%="##{id_name}"%>></button>
@@ -45,8 +52,10 @@
           <%= restaurant[:popular_times][6] %>
          </div>
         </div>
+      </div>
     </div>
 <%end%>
+<button class="scrlBtn" title="Go to top">Top</button>
 <%= will_paginate(@restaurant, :style => 'color:red') %>
 
 
