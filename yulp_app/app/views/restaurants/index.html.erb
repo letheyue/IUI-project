@@ -18,7 +18,7 @@
               <!--<a class="next" onclick="plusSlides(1, <%= i%>)">&#10095;</a>-->
               <a class="prev <%= i%>">&#10094;</a>
               <a class="next <%= i%>">&#10095;</a>
-          <div><%= restaurant[i][:name] %></div>
+          <div><%= restaurant[:name] %></div>
         </h2>
         <%- id_name = "toggle"+ i.to_s%>
         <h4><%= restaurant[:address]  %>  /  Rating : <%= restaurant[:rating] %>
@@ -30,27 +30,27 @@
         </h4>
         <% location = restaurant[:name].tr(" ", "+") + "," + restaurant[:address].tr(" ", "+")
            address = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyC1crIIEC4So_FjEGhQ2QX1W9dc7eeM2Ds&q=' + location%>
-        <button type="button" class="mybtn collapsed" data-toggle="collapse" data-target=<%="##@idname"%>></button>
-        <div id= <%="#@idname"%>  class="collapse">
+        <button type="button" class="mybtn collapsed" data-toggle="collapse" data-target=<%="##{id_name}"%>></button>
+        <div id= <%="#{id_name}"%>  class="collapse">
           <p>
             <div class = "map">
               <iframe
               width="300"
               height="300"
               frameborder="0" style="border:0"
-              src=<%="#@address"%> allowfullscreen>
+              src=<%="#{address}"%> allowfullscreen>
               </iframe>
             </div>
             <h3>Other Details</h3>
-            Discount : <%= @restaurant[i][:discount] %><br/>
-            Popular times: <%= @restaurant[i][:popular_times] %>
+            Discount : <%= restaurant[:discount] %><br/>
+            Popular times: <%= restaurant[:popular_times] %>
           <br>lol
-          <%= @restaurant[i][:popular_times][6] %>
+          <%= restaurant[:popular_times][6] %>
          </div>
         </div>
-      </div>
     </div>
 <%end%>
 <button class="scrlBtn" title="Go to top">Top</button>
 <%= will_paginate(@restaurant, :style => 'color:red') %>
+
 

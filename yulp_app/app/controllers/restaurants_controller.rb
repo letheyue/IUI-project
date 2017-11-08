@@ -15,7 +15,7 @@ class RestaurantsController < ApplicationController
 >>>>>>> Aggregated Commit for Rest View
 =======
   def index
-    @restaurant = Restaurant.all
+    @restaurant = Restaurant.paginate(:page => params[:page],:per_page => 5).order(id: :asc).all
 
   end
 >>>>>>> Fix Layout

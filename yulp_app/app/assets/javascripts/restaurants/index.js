@@ -34,6 +34,7 @@ $(document).ready(function() {
         e.stopPropagation();
     });
 
+<<<<<<< HEAD
 
 
 
@@ -46,3 +47,6 @@ $(document).ready(function() {
     }
 });
 
+=======
+});
+>>>>>>> Minor Updates
