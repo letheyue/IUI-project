@@ -10,19 +10,14 @@ class Restaurant < ActiveRecord::Base
 
   self.table_name = "restaurants"
 
-  @whole_information = YelpClient.search({})
-  @size = @whole_information["businesses"].size
-  @business = @whole_information["businesses"]
-
-
-  def self.trim_to_empty(str)
+  def trim_to_empty(str)
     if str.nil?
       return ''
     end
     str
   end
 
-  def self.name
+  def name
     name = Array.new(@size)
     index = 0
     @business.each do |n|
@@ -32,7 +27,7 @@ class Restaurant < ActiveRecord::Base
     name
   end
 
-  def self.address
+  def address
     address = Array.new(@size)
     index = 0
     @business.each do |a|
@@ -54,7 +49,7 @@ class Restaurant < ActiveRecord::Base
     address
   end
 
-  def self.add_open_hour(id)
+  def add_open_hour(id)
     hash = YelpClient.business(id)
     open_hour = Hash.new
 
@@ -90,7 +85,7 @@ class Restaurant < ActiveRecord::Base
     open_hour
   end
 
-  def self.get_all_popular_times(names, addresses)
+  def get_all_popular_times(names, addresses)
     places = names.zip(addresses).to_h
     # byebug
     result_hash = Hash.new
@@ -108,7 +103,7 @@ class Restaurant < ActiveRecord::Base
     result_hash
   end
 
-  def self.get_all_discount_info(names, addresses)
+  def get_all_discount_info(names, addresses)
     places = names.zip(addresses).to_h
     CrawlerClient.get_all_discount_info(places)
   end
@@ -120,6 +115,10 @@ class Restaurant < ActiveRecord::Base
   #   popular_times can be nil
   #   each element in popular_times Hash can be nil
   def self.setup_table_once
+
+    @whole_information = YelpClient.search({})
+    @size = @whole_information["businesses"].size
+    @business = @whole_information["businesses"]
 
     @fetched ||= Restaurant.all.present?
     if @fetched
