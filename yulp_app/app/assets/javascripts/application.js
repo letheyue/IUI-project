@@ -14,7 +14,6 @@
 //put bootstrap before jquery, otherwise dropdown menu won't work
 //https://stackoverflow.com/questions/11697789/why-is-my-dropdown-menu-with-bootstrap-not-working
 
-//= require bootstrap-sprockets
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks

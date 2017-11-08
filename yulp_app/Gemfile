@@ -15,6 +15,7 @@ gem 'rails', '~> 5.0.1'
 # Use Puma as the app server
 gem 'bootstrap-sass', '3.3.6'
 gem 'autoprefixer-rails'
+# Use ActiveModel has_secure_password
 gem 'bcrypt', '3.1.11'
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -38,8 +39,6 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
 
 # Used for parsing HTML documents
 gem 'watir'
@@ -63,6 +62,9 @@ gem 'haml'
 # Simple_form
 gem 'simple_form'
 
+# paginate pages
+gem 'will_paginate', '~> 3.1.0'
+
 # a replacement for the URI implementation
 # gem 'addressable'
 
@@ -71,7 +73,7 @@ gem 'simple_form'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platform: :mri
+  gem 'byebug'
 end
 
 group :development do
