@@ -1,26 +1,21 @@
 <%= javascript_include_tag 'restaurants/index' %>
-<%= stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" %>
 
-<%- @restaurant.each_with_index do |restaurant, i| %>
-    <div class = "container">
+<%= stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" %>
+<% @restaurant.each_with_index do |restaurant, i| %>
+    <div class ="container">
       <div class="ResTitle">
         <div class="displaygraph">
           <%- image_src = restaurant[:image_url] %>
           <div class="slideshow-container">
-            <%- restaurant_name = "slides"+i.to_s%>
+            <% restaurant_name = "slides"+i.to_s%>
             <div class="mySlides" name = <%="#{restaurant_name}"%> >
               <div class="numbertext"><%= i%></div>
               <img src= <%="#{image_src}"%> style="height:120px;width:120px">
             </div>
-
-            <div>
-              <!--<a class="prev" onclick="plusSlides(-1, <%= i%>)">&#10094;</a>-->
-              <!--<a class="next" onclick="plusSlides(1, <%= i%>)">&#10095;</a>-->
-              <a class="prev <%= i%>">&#10094;</a>
-              <a class="next <%= i%>">&#10095;</a>
-          <div><%= restaurant[:name] %></div>
-        </h2>
-        <%- id_name = "toggle"+ i.to_s%>
+          </div>
+        </div>
+        <h2><%= restaurant[:name] %></h2>
+        <% id_name = "toggle"+ i.to_s%>
         <h4><%= restaurant[:address]  %>  /  Rating : <%= restaurant[:rating] %>
           <span class=<%if restaurant[:rating] >= 1 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></span>
                      <span class=<%if restaurant[:rating] >= 2 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></span>
@@ -48,9 +43,9 @@
           <%= restaurant[:popular_times][6] %>
          </div>
         </div>
-      </div>
+    </div>
 <%end%>
 <button class="scrlBtn" title="Go to top">Top</button>
-<%= will_paginate(@restaurant, :style => 'color:red') %>
 
+<%= will_paginate(@restaurant, :style => 'color:red') %>
 

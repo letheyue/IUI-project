@@ -34,25 +34,14 @@ $(document).ready(function() {
         e.stopPropagation();
     });
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> Merge branch 'master' of https://github.com/letheyue/IUI-project into restaurant_homepage_view
-
-
 
     // When the user clicks on the button, scroll to the top of the document
     $('.scrlBtn').click(function(){topFunction()});
 
-    function topFunction() {
-        document.body.scrollTop = 0; // For Chrome, Safari and Opera
-        document.documentElement.scrollTop = 0; // For IE and Firefox
-    }
+
 });
 
-<<<<<<< HEAD
-=======
-});
->>>>>>> Minor Updates
-=======
->>>>>>> Merge branch 'master' of https://github.com/letheyue/IUI-project into restaurant_homepage_view
+function topFunction() {
+    document.body.scrollTop = 0; // For Chrome, Safari and Opera
+    document.documentElement.scrollTop = 0; // For IE and Firefox
+}
