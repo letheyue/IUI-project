@@ -35,6 +35,9 @@ $(document).ready(function() {
     });
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Merge branch 'master' of https://github.com/letheyue/IUI-project into restaurant_homepage_view
 
 
 
@@ -47,6 +50,9 @@ $(document).ready(function() {
     }
 });
 
+<<<<<<< HEAD
 =======
 });
 >>>>>>> Minor Updates
+=======
+>>>>>>> Merge branch 'master' of https://github.com/letheyue/IUI-project into restaurant_homepage_view
