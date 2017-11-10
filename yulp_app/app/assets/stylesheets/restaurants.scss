@@ -64,10 +64,15 @@ input[type=text]:focus {
   content: "\e114";
 }
 .mybtn{
+<<<<<<< HEAD
   background-color: transparent;
   width: 100%;
   border: none;
   outline: none;
+=======
+  background-color: #ffffff;
+  width: 100%
+>>>>>>> 7cb8855add775fcfa074108990f93f53a2c18e53
 }
 .displaygraph{
   float: right;
@@ -178,6 +183,7 @@ input[type=text]:focus {
 .checked {
   color: orange;
 }
+
 .scrlBtn:hover {
   background-color: #555; /* Add a dark-grey background on hover */
 }

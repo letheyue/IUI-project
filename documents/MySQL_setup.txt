@@ -1,7 +1,7 @@
 1. Check if 'brew' is installed (by typing brew in terminal)
 To install, command:
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null 2> /dev/null
-
+c
 2. Install MySQL
 brew install mysql
 
