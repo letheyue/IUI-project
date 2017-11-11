@@ -34,4 +34,15 @@ $(document).ready(function() {
         e.stopPropagation();
     });
 
+
+    // When the user clicks on the button, scroll to the top of the document
+    $('.scrlBtn').click(function(){topFunction()});
+
+
 });
+
+function topFunction() {
+    document.body.scrollTop = 0; // For Chrome, Safari and Opera
+    document.documentElement.scrollTop = 0; // For IE and Firefox
+}
+

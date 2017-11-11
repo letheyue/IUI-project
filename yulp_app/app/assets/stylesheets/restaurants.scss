@@ -1,25 +1,29 @@
+
+// Place all the styles related to the Sessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
 body {
   font-family: "Open Sans", Arial;
   background: #ffffff;
 }
 main {
   background: #EEE;
-  width: 1200px;
   margin: 20px auto;
   box-shadow: 0 3px 5px rgba(0,0,0,0.3);
 }
 h2 {
   text-align: left;
-  font-size: 40px;
+  font-size: 200%;
   color: #B00100;
 }
 h4{
   text-align: center;
   color: #000000;
-  font-size: 10px;
+  font-size: 100%;
 }
 p {
-  padding: 20px;
+  padding: 10%;
   font-size: 13px;
   color: #000000;
 }
@@ -64,8 +68,10 @@ input[type=text]:focus {
   content: "\e114";
 }
 .mybtn{
-  background-color: #ffffff;
-  width: 100%
+  background-color: transparent;
+  width: 100%;
+  border: none;
+  outline: none;
 }
 .displaygraph{
   float: right;
@@ -86,19 +92,6 @@ input[type=text]:focus {
 
 
 /* Next & previous buttons */
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-
-  margin-top: -14px;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-}
 
 /* Position the "next button" to the right */
 .next {
@@ -106,13 +99,6 @@ input[type=text]:focus {
   float: right;
   /*border-radius: 3px 0 0 3px;*/
 }
-.pre
-
-  /* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
-}
-
 /* Caption text */
 .text {
   color: #f2f2f2;
@@ -150,4 +136,32 @@ input[type=text]:focus {
 @keyframes fade {
   from {opacity: .4}
   to {opacity: 1}
+}
+.reviews{
+  padding: 10px;
+  width:340px;
+}
+.reviewcontainer{
+  width: 320px;
+  height: 300px;
+  overflow: scroll;
+}
+.scrlBtn {
+  position: fixed; /* Fixed/sticky position */
+  bottom: 20px; /* Place the button at the bottom of the page */
+  right: 30px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  background-color: red; /* Set a background color */
+  color: white; /* Text color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  padding: 15px; /* Some padding */
+  border-radius: 10px; /* Rounded corners */
+}
+.checked {
+  color: orange;
+}
+.scrlBtn:hover {
+  background-color: #555; /* Add a dark-grey background on hover */
 }

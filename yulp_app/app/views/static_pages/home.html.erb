@@ -1,11 +1,9 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <div class="center jumbotron" style="background-image: url('/assets/banner.jpg');background-size:cover">
   <h1 style="color: #ffffff">Welcome to the Yulp App</h1>
   <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary", style:"background-color:  #B00100; border: none" %>
 </div>
-<html>
-<%= render 'layouts/header' %>
-<body>
 <%for i in 0..4%>
     <div class = "container">
       <div class="ResTitle">
@@ -24,8 +22,7 @@
           </div>
         </div>
         <h2>Restaurant Name</h2>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <% @rating = 3 %>
+        <% @rating = 0 %>
         <span class=<%if @rating >= 1 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></span>
         <span class=<%if @rating >= 2 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></span>
         <span class=<%if @rating >= 3 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></span>
@@ -105,51 +102,5 @@
         </div>
       </div>
     </div>
+<% end %>
 
-<%end%>
-<button onclick="topFunction()" id="scrlBtn" title="Go to top">Top</button>
-
-<script>
-    window.onscroll = function() {scrollFunction()};
-
-    function scrollFunction() {
-        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-            document.getElementById("scrlBtn").style.display = "block";
-        } else {
-            document.getElementById("scrlBtn").style.display = "none";
-        }
-    }
-
-    // When the user clicks on the button, scroll to the top of the document
-    function topFunction() {
-        document.body.scrollTop = 0; // For Chrome, Safari and Opera
-        document.documentElement.scrollTop = 0; // For IE and Firefox
-    }
-    var slideIndex = 1;
-    for(var k = 0; k < 5; k++) {
-        showSlides(slideIndex, k);
-    }
-
-    function plusSlides(n, id) {
-        showSlides(slideIndex += n, id);
-    }
-
-    function currentSlide(n, id) {
-        showSlides(slideIndex = n, id);
-    }
-
-    function showSlides(n, id) {
-        var i;
-        var name = "slides" + id
-        var slides = document.getElementsByName(name);
-        if (n > slides.length) {slideIndex = 1}
-        if (n < 1) {slideIndex = slides.length}
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
-        }
-
-        slides[slideIndex-1].style.display = "block";
-    }
-</script>
-</body>
-</html>
