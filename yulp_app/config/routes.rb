@@ -20,11 +20,12 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  get 'preferences/edit'
+  # get 'preferences/edit'
 
-  resources :users
+  resources :users do
+    resources :preferences
+  end
   resources :restaurants
-  resources :preferences
 
   resources :sessions, only: [:create, :destroy]
   # facebook login & google login

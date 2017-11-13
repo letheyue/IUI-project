@@ -1,7 +1,7 @@
-<!--Example use of Asset pipeline:-->
-
-
+<%= javascript_include_tag 'preferences/index' %>
 
 <% provide(:title, 'Edit Your Preferences') %>
-<h1>666 preference</h1>
-<%= render 'form' %>
+<h1>Your Preference</h1>
+
+<%= render :partial => 'preference_table', :locals => { :preference => @preference }   %>
+<%= render :partial => 'preference_button_groups' %>

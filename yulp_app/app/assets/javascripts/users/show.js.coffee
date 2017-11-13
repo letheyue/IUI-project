@@ -1,2 +1,2 @@
 $ ->
-  alert('Pipeline Js Applied')
+#  alert('Pipeline Js Applied')

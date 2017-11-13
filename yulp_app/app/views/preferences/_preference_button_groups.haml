@@ -1,0 +1,9 @@
+
+%hr
+.row
+  .col-lg-3
+    %a{:href => new_user_preference_path(current_user), :class => 'btn btn-block btn-success', :id => 'button-create'} Create New
+    %a{:href => '/', :class => 'btn btn-block btn-danger', :id => 'button-delete'} Delete
+    %a{:href => '/', :class => 'btn btn-block btn-warning', :id => 'button-search'} Move To Search Page
+    %a{:href => user_path(current_user), :class => 'btn btn-block btn-primary', :id => 'back'} Back To Profile
+  .col-lg-9

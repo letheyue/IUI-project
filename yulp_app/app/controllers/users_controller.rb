@@ -1,19 +1,22 @@
 class UsersController < ApplicationController
+
+  before_action :valid_user_id
+
+
   def new
     @user = User.new
   end
 
   def show
     @user = User.find(params[:id])
-    # byebug
   end
 
   def create
     @user = User.new(user_params)
     if @user.save
       flash[:success] = "Welcome to the Yulp App!"
-      redirect_to @user
       log_in @user
+      redirect_to @user
     else
       render 'new'
     end
@@ -25,5 +28,14 @@ class UsersController < ApplicationController
                                  :password_confirmation,
                                  :provider, :uid, :oauth_token, :oauth_expires_at)
   end
+
+  def valid_user_id
+    # byebug
+    unless current_user && params[:id].present? && current_user.id.to_s == params[:id]
+      flash[:danger] = 'You are not authorized to access this page. Redirecting you to home/profile page'
+      redirect_to login_path
+    end
+  end
+
 
 end

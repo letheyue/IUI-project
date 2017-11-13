@@ -1,6 +1,9 @@
 class SessionsController < ApplicationController
   def new
-
+    # byebug
+    if logged_in?
+      redirect_to user_path(current_user)
+    end
   end
 
   def create

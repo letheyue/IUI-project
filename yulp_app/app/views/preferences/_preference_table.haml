@@ -1,0 +1,14 @@
+
+%table.table.table-striped.table-condensed.table-hover.dt-responsive
+  %thead
+    %tr
+      %td Preference Id
+      %td Date Created
+      %td Date Modified
+      %td Valid?
+  %tbody
+    -unless preference.nil?
+      %td{:id => "preference_#{preference.id}"} #{preference.id}
+      %td #{preference.created_at}
+      %td #{preference.updated_at}
+      %td True

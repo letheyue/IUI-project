@@ -1,7 +1,7 @@
-<!--Example use of Asset pipeline:-->
 
 
 
 <% provide(:title, 'Edit Your Preferences') %>
-<h1>87 preference</h1>
-<%= render 'form' %>
+<h1> Preference Show</h1>
+
+<%= render :partial => 'preference_table', :locals => { :preference => @preference } %>
