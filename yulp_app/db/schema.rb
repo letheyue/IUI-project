@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171025180932) do
+ActiveRecord::Schema.define(version: 20171113165645) do
 
   create_table "business_trains", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -31,6 +31,23 @@ ActiveRecord::Schema.define(version: 20171025180932) do
     t.integer "restaurant_id"
     t.index ["category_id"], name: "index_categories_restaurants_on_category_id", using: :btree
     t.index ["restaurant_id"], name: "index_categories_restaurants_on_restaurant_id", using: :btree
+  end
+
+  create_table "preferences", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id",              null: false
+    t.integer  "price"
+    t.integer  "discount"
+    t.integer  "popularity"
+    t.integer  "rating"
+    t.integer  "crowded"
+    t.boolean  "show_rating"
+    t.boolean  "show_reviews"
+    t.boolean  "show_discount"
+    t.boolean  "show_popular_time"
+    t.integer  "restaurants_per_page"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.index ["user_id"], name: "index_preferences_on_user_id", unique: true, using: :btree
   end
 
   create_table "restaurants", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

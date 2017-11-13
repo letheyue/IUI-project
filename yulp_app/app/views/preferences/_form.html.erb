@@ -1,0 +1,58 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%=form_for(@preference, html: {class: 'form-horizontal'}) do |f| %>
+
+
+        <b>Price Importance</b><br>
+        <label class="radio-inline"><%= f.radio_button :price, '3'%>Important</label>
+        <label class="radio-inline"><%= f.radio_button :price, '2'%>Don't mind</label>
+        <label class="radio-inline"><%= f.radio_button :price, '1'%>Not important</label><br><br>
+
+
+        <b>Discount Importance</b><br>
+        <label class="radio-inline"><%= f.radio_button :discount, '3'%>Important</label>
+        <label class="radio-inline"><%= f.radio_button :discount, '2'%>Don't mind</label>
+        <label class="radio-inline"><%= f.radio_button :discount, '1'%>Not important</label><br><br>
+
+        <b>Popularity(reviews number) Importance</b><br>
+        <label class="radio-inline"><%= f.radio_button :popularity, '3'%>Important</label>
+        <label class="radio-inline"><%= f.radio_button :popularity, '2'%>Don't mind</label>
+        <label class="radio-inline"><%= f.radio_button :popularity, '1'%>Not important</label><br><br>
+
+        <b>Rating Importance</b><br>
+        <label class="radio-inline"><%= f.radio_button :rating, '3'%>Important</label>
+        <label class="radio-inline"><%= f.radio_button :rating, '2'%>Don't mind</label>
+        <label class="radio-inline"><%= f.radio_button :rating, '1'%>Not important</label><br><br>
+
+        <b>Crowded Importance</b><br>
+        <label class="radio-inline"><%= f.radio_button :crowded, '3'%>Important</label>
+        <label class="radio-inline"><%= f.radio_button :crowded, '2'%>Don't mind</label>
+        <label class="radio-inline"><%= f.radio_button :crowded, '1'%>Not important</label><br><br>
+
+        <b>Show Ratings</b><br>
+        <label class="radio-inline"><%= f.radio_button :show_rating, "true"%>Yes</label>
+        <label class="radio-inline"><%= f.radio_button :show_rating, "false"%>No</label><br><br>
+
+        <b>Show Reviews</b><br>
+        <label class="radio-inline"><%= f.radio_button :show_reviews, "true"%>Yes</label>
+        <label class="radio-inline"><%= f.radio_button :show_reviews, "false"%>No</label><br><br>
+
+        <b>Show Discount</b><br>
+        <label class="radio-inline"><%= f.radio_button :show_discount, "true"%>Yes</label>
+        <label class="radio-inline"><%= f.radio_button :show_discount, "false"%>No</label><br><br>
+
+        <b>Show Popular Time</b><br>
+        <label class="radio-inline"><%= f.radio_button :show_popular_time, "true"%>Yes</label>
+        <label class="radio-inline"><%= f.radio_button :show_popular_time, "false"%>No</label><br><br>
+
+        <b>Restaurants per page</b><br>
+        <%= f.select(:restaurants_per_page, [ 10, 20, 30, "All"] ) %>
+
+        <%= f.submit "Save my preference", class: "btn btn-primary" %>
+
+
+
+
+    <% end %>
+  </div>
+</div>
