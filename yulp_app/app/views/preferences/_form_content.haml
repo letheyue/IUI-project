@@ -1,0 +1,50 @@
+.dummy
+  .form-group
+    .col-sm-4
+      =f.label 'Price:'
+    .col-sm-8
+      =f.collection_radio_buttons :price, [['1', 'Not important'],['2', "Don't mind"],['3', 'Important']], :first, :last
+    .col-sm-4
+      =f.label 'Discount:'
+    .col-sm-8
+      =f.collection_radio_buttons :discount, [['1', 'Not important'],['2', "Don't mind"],['3', 'Important']], :first, :last
+    .col-sm-4
+      =f.label 'Popularity:'
+    .col-sm-8
+      =f.collection_radio_buttons :popularity, [['1', 'Not important'],['2', "Don't mind"],['3', 'Important']], :first, :last
+    .col-sm-4
+      =f.label 'Rating:'
+    .col-sm-8
+      =f.collection_radio_buttons :rating, [['1', 'Not important'],['2', "Don't mind"],['3', 'Important']], :first, :last
+    .col-sm-4
+      =f.label 'Crowded:'
+    .col-sm-8
+      =f.collection_radio_buttons :crowded, [['1', 'Not important'],['2', "Don't mind"],['3', 'Important']], :first, :last
+
+    .form-group
+      .col-sm-4
+        =f.label 'Show Ratings:'
+      .col-sm-8
+        =f.collection_radio_buttons :show_rating, [%w(true Yes),%w(false No)], :first, :last
+      .col-sm-4
+        =f.label 'Show Reviews:'
+      .col-sm-8
+        =f.collection_radio_buttons :show_reviews, [%w(true Yes),%w(false No)], :first, :last
+      .col-sm-4
+        =f.label 'Show Discount:'
+      .col-sm-8
+        =f.collection_radio_buttons :show_discount, [%w(true Yes),%w(false No)], :first, :last
+      .col-sm-4
+        =f.label 'Show Popular Time:'
+      .col-sm-8
+        =f.collection_radio_buttons :show_popular_time, [%w(true Yes),%w(false No)], :first, :last
+
+    .form-group
+      .col-sm-4
+        =f.label 'Restaurants per page:'
+      .col-sm-8
+        =f.select :restaurants_per_page, [ 10, 20, 30, 'All']
+    .col-sm-12
+      %hr
+
+    =f.submit 'Save my preference', class: 'btn btn-primary'

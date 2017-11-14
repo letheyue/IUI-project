@@ -1,0 +1,4 @@
+%hr
+= simple_form_for(@preference, url: user_preferences_path(current_user.id),
+  method: :post, html: { class: 'form-group row' }) do |f|
+  =render :partial => 'form_content', :locals => {:f => f}

@@ -2,6 +2,17 @@
 
 
 <% provide(:title, 'Edit Your Preferences') %>
-<h1> Preference Show</h1>
+<h1> Preference Details Page</h1>
 
-<%= render :partial => 'preference_table', :locals => { :preference => @preference } %>
+<%= render :partial => 'details', :locals => { :preference => @preference } %>
+<div class="row" >
+
+  <hr />
+  <div class="col-sm-3">
+    <%= link_to('Back To Preference', user_preferences_path(current_user), class: 'btn btn-block btn-primary', id: 'back-prefer') %>
+    <%= link_to('Back To Profile', user_path(current_user), class: 'btn btn-block btn-primary', id: 'back-profile') %>
+  </div>
+</div>
+
+
+

@@ -23,7 +23,11 @@ Rails.application.routes.draw do
   # get 'preferences/edit'
 
   resources :users do
-    resources :preferences
+    resources :preferences do
+      collection do
+        post 'destroy_all'
+      end
+    end
   end
   resources :restaurants
 

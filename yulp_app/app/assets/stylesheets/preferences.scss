@@ -1,3 +1,11 @@
 #preference_restaurants_per_page{
   width:70px;
 }
+
+// Improve radio layout
+input[type="radio"] {
+  margin-right: 6px;
+  vertical-align: text-bottom;
+}
+
+

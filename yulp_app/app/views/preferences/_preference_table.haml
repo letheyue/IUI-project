@@ -2,13 +2,15 @@
 %table.table.table-striped.table-condensed.table-hover.dt-responsive
   %thead
     %tr
-      %td Preference Id
-      %td Date Created
-      %td Date Modified
-      %td Valid?
+      %td.center Preference Id
+      %td.center Date Created
+      %td.center Date Modified
+      %td.center Valid?
   %tbody
     -unless preference.nil?
-      %td{:id => "preference_#{preference.id}"} #{preference.id}
-      %td #{preference.created_at}
-      %td #{preference.updated_at}
-      %td True
+      %tr
+        %td.center= link_to("#{preference.id}",
+                      user_preference_path(current_user, preference), id: "preference_#{preference.id}")
+        %td.center #{preference.created_at}
+        %td.center #{preference.updated_at}
+        %td.center True

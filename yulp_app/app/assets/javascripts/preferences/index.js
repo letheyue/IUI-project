@@ -16,8 +16,11 @@ $(document).ready(function() {
     $('[id^=button-]').click(function (e) {
         if ($(this).attr("disabled")) {
             e.preventDefault();
+            e.stopPropagation();
         }
     })
+
+
 
 
 

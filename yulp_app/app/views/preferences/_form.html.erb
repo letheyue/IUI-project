@@ -45,7 +45,7 @@
         <label class="radio-inline"><%= f.radio_button :show_popular_time, "false"%>No</label><br><br>
 
         <b>Restaurants per page</b><br>
-        <%= f.select(:restaurants_per_page, [ 10, 20, 30, "All"] ) %>
+        <%= f.select(:restaurants_per_page, [ 10, 20, 30, "Max"] ) %>
 
         <%= f.submit "Save my preference", class: "btn btn-primary" %>
 

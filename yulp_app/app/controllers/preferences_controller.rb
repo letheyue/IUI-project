@@ -1,7 +1,8 @@
 class PreferencesController < ApplicationController
   include SessionsHelper
   before_action :validate_login
-  before_action :set_preference, only: [:edit]
+  # before_action :set_preference, only: [:edit]
+  before_action :valid_user_id
 
   def new
     @preference = Preference.new
@@ -13,6 +14,13 @@ class PreferencesController < ApplicationController
 
   def show
     @preference = current_user.preference
+    if @preference && @preference.id.to_s == params[:id]
+
+    else
+      flash[:danger] = 'The page you are looking for is missing. Redirecting you to home/profile page'
+      redirect_to login_path
+    end
+
   end
 
   def create
@@ -29,9 +37,23 @@ class PreferencesController < ApplicationController
       @preference = current_user.preference
       flash[:warning] = 'Already have a Preference for you in our database.'
     end
-    redirect_to user_preference_path(current_user.id, @preference.id)
+    redirect_to user_preference_path(current_user, @preference.id)
 
   end
+
+  def destroy_all
+    @preference = current_user.preference
+    if @preference.nil?
+      flash[:danger] = "There's no preference for user #{current_user.name}. You cannot delete."
+    else
+      @preference.destroy
+      flash[:success] = "Successfully deleted preference for user #{current_user.name}."
+    end
+    redirect_to user_preferences_path(current_user)
+  end
+
+
+
 
   def edit
 
@@ -55,6 +77,15 @@ class PreferencesController < ApplicationController
 
 
   private
+
+
+  def valid_user_id
+    # byebug
+    unless current_user && params[:user_id].present? && current_user.id.to_s == params[:user_id]
+      flash[:danger] = 'You are not authorized to access this page. Redirecting you to home/profile page'
+      redirect_to login_path
+    end
+  end
 
   def validate_login
     unless logged_in?
