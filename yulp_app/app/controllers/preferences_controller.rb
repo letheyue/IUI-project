@@ -1,5 +1,6 @@
 class PreferencesController < ApplicationController
   include SessionsHelper
+  include PreferencesHelper
   before_action :validate_login
   # before_action :set_preference, only: [:edit]
   before_action :valid_user_id
@@ -60,14 +61,14 @@ class PreferencesController < ApplicationController
   end
 
   def update
-    byebug
+    # byebug
+    @preference = current_user.preference
     if current_user.preference.update(preference_params)
-        render('edit')
-      else
-        render('edit')
-        format.json { render json: @preference.errors, status: :unprocessable_entity }
-      end
-
+      flash[:success] = 'Preference Updated Successfully'
+    else
+      flash[:danger] = 'Cannot Update Preference'
+    end
+    redirect_to user_preference_path(current_user, @preference.id)
   end
 
 

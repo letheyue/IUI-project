@@ -1,17 +1,20 @@
-
-
+<%= javascript_include_tag 'preferences/show' %>
 
 <% provide(:title, 'Edit Your Preferences') %>
 <h1> Preference Details Page</h1>
 
 <%= render :partial => 'details', :locals => { :preference => @preference } %>
 <div class="row" >
-
   <hr />
   <div class="col-sm-3">
     <%= link_to('Back To Preference', user_preferences_path(current_user), class: 'btn btn-block btn-primary', id: 'back-prefer') %>
     <%= link_to('Back To Profile', user_path(current_user), class: 'btn btn-block btn-primary', id: 'back-profile') %>
   </div>
+  <div class="col-sm-6"></div>
+  <div class="col-sm-3">
+
+  </div>
+
 </div>
 
 

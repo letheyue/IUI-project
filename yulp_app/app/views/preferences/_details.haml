@@ -1,7 +1,35 @@
-%h3 Detailed Preference for '#{current_user.name}'
+%h3 Detailed Preference for '#{current_user.name}', click each row if you want to make changes
+
+= form_tag(user_preference_path(current_user, preference), :method => :patch, :id => 'pform') do
+
+  %table.table.table-striped.table-condensed.table-hover.dt-responsive
+    %thead
+      %tr
+        %td.center.col-sm-4 Type
+        %td.center.col-sm-8 Preference
+    %tbody
+      %tr
+        %td.center Price
+        %td{:id => 'td_price', :class => "#{convert_to_printable preference.price} center"} #{convert_to_printable preference.price}
+      %tr
+        %td.center Discount
+        %td{:id => 'td_discount', :class => "#{convert_to_printable preference.discount} center"} #{convert_to_printable preference.discount}
+      %tr
+        %td.center Popularity
+        %td{:id => 'td_popularity', :class => "#{convert_to_printable preference.popularity} center"} #{convert_to_printable preference.popularity}
+      %tr
+        %td.center Rating
+        %td{:id => 'td_rating', :class => "#{convert_to_printable preference.rating} center"} #{convert_to_printable preference.rating}
+      %tr
+        %td.center Crowded
+        %td{:id => 'td_crowded', :class => "#{convert_to_printable preference.crowded} center"} #{convert_to_printable preference.crowded}
+      %tr
+        %td.center Restaurants
+        %td.center #{preference.restaurants_per_page}
 
 
-
-
-
-
+.row
+  .col-sm-5
+  .col-sm-2
+    = submit_tag 'Save Changes', :form => 'pform', :class => 'btn-block btn-success hide', :id => 'submit'
+  .col-sm-5

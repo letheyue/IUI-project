@@ -10,7 +10,8 @@
     -unless preference.nil?
       %tr
         %td.center= link_to("#{preference.id}",
-                      user_preference_path(current_user, preference), id: "preference_#{preference.id}")
+                      user_preference_path(current_user, preference),
+                      id: "preference_#{preference.id}", class: "btn btn-primary")
         %td.center #{preference.created_at}
         %td.center #{preference.updated_at}
         %td.center True
