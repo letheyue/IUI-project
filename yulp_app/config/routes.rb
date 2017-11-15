@@ -20,7 +20,6 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  # get 'preferences/edit'
 
   resources :users do
     resources :preferences do
@@ -29,7 +28,18 @@ Rails.application.routes.draw do
       end
     end
   end
-  resources :restaurants
+
+  get '/search', to: 'restaurants#search'
+
+  resources :users
+
+  resources :restaurants do
+    collection do
+      get :search
+    end
+  end
+  # resources :restaurants
+
 
   resources :sessions, only: [:create, :destroy]
   # facebook login & google login

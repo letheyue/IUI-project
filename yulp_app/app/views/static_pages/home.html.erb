@@ -1,11 +1,15 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <div class="center jumbotron" style="background-image: url('/assets/banner.jpg');background-size:cover">
   <h1 style="color: #ffffff">Welcome to the Yulp App</h1>
   <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary", style:"background-color:  #B00100; border: none" %>
 </div>
+
+<html>
+<%= render 'layouts/header' %>
+<body>
 <%for i in 0..4%>
     <div class = "container">
+
       <div class="ResTitle">
         <div class="displaygraph">
           <%@image_src = "https://ichef-1.bbci.co.uk/news/976/media/images/83351000/jpg/_83351965_explorer273lincolnshirewoldssouthpicturebynicholassilkstone.jpg" %>
@@ -22,7 +26,8 @@
           </div>
         </div>
         <h2>Restaurant Name</h2>
-        <% @rating = 0 %>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <% @rating = 3 %>
         <span class=<%if @rating >= 1 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></span>
         <span class=<%if @rating >= 2 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></span>
         <span class=<%if @rating >= 3 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></span>
@@ -54,8 +59,7 @@
           </div>
           <div class="reviews">
             <div>
-            <h3 style="background: #B00100; color:#ffffff">Reviews  <button type="button" data-toggle="modal" style="float: right; background: #850100; border: none; height: 24px; font-size:16px"  data-target=<%='#'+@idname+'review'%>>Make Review</button>
-</h3>
+              <h3 style="background: #B00100; color:#ffffff">Reviews  <button type="button" data-toggle="modal" style="float: right; background: #850100; border: none; height: 24px; font-size:16px"  data-target=<%='#'+@idname+'review'%>>Make Review</button></h3>
                 <div class="modal fade" id=<%="#@idname"'review'%> role="dialog">
                     <div class="modal-dialog">
 
@@ -93,14 +97,15 @@
                      <span class=<%if @userrating >= 2 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></span>
                      <span class=<%if @userrating >= 3 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></span>
                      <span class=<%if @userrating >= 4 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></span>
-                     <span class=<%if @userrating >= 5 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></span></br><%= @userreview%></td>
+                     <span class=<%if @userrating >= 5 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></span></br><%= @userreview%>
+                     </td>
                  </tr>
                  <%end%>
              </table>
-          </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-<% end %>
-
+    </body>
+    </html>

@@ -184,5 +184,10 @@ class Restaurant < ActiveRecord::Base
     @fetched = true
   end
 
+  def self.search(search)
+    search = search.downcase.gsub(/\-/, '')
+    where("lower(name) LIKE ? OR lower(address) LIKE ? OR lower(city) LIKE ? OR lower(zip_code) LIKE ? OR lower(phone) LIKE ?", "%#{search}%", "%#{search}%","%#{search}%", "%#{search}%", "%#{search}%")
+  end
+
 
 end

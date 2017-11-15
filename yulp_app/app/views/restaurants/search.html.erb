@@ -1,0 +1,59 @@
+<%= javascript_include_tag 'restaurants/search' %>
+
+<%= stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" %>
+
+<%= form_tag(search_restaurants_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search restaurant's name or address or phone number or city or zip_code" %>
+    <%= submit_tag "Search", :name => nil %>
+<% end %>
+
+<% @restaurant.each_with_index do |restaurant, i| %>
+    <div class ="container">
+      <div class="ResTitle">
+        <div class="displaygraph">
+          <%- image_src = restaurant[:image_url] %>
+          <div class="slideshow-container">
+
+            <% restaurant_name = "slides"+i.to_s%>
+
+            <div class="mySlides" name = <%="#{restaurant_name}"%> >
+              <div class="numbertext"><%= i%></div>
+              <img src= <%="#{image_src}"%> style="height:120px;width:120px">
+            </div>
+          </div>
+        </div>
+        <h2><%= restaurant[:name] %></h2>
+        <% id_name = "toggle"+ i.to_s%>
+        <h4><%= restaurant[:address]  %>  /  Rating : <%= restaurant[:rating] %>
+          <span class=<%if restaurant[:rating] >= 1 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></span>
+                     <span class=<%if restaurant[:rating] >= 2 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></span>
+                     <span class=<%if restaurant[:rating] >= 3 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></span>
+                     <span class=<%if restaurant[:rating] >= 4 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></span>
+                     <span class=<%if restaurant[:rating] >= 5 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></span>
+        </h4>
+        <% location = restaurant[:name].tr(" ", "+") + "," + restaurant[:address].tr(" ", "+")
+           address = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyC1crIIEC4So_FjEGhQ2QX1W9dc7eeM2Ds&q=' + location%>
+        <button type="button" class="mybtn collapsed" data-toggle="collapse" data-target=<%="##{id_name}"%>></button>
+        <div id= <%="#{id_name}"%>  class="collapse">
+          <p>
+          <div class = "map">
+            <iframe
+            width="300"
+            height="300"
+            frameborder="0" style="border:0"
+            src=<%="#{address}"%> allowfullscreen>
+            </iframe>
+          </div>
+          <h3>Other Details</h3>
+          Discount : <%= restaurant[:discount] %><br/>
+          Popular times: <%= restaurant[:popular_times] %>
+          <br>lol
+          <%= restaurant[:popular_times][6] %>
+        </div>
+      </div>
+    </div>
+<%end%>
+<button class="scrlBtn" title="Go to top">Top</button>
+
+<%= will_paginate(@restaurant, :style => 'color:red') %>
+
