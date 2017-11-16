@@ -2,7 +2,6 @@ $(document).ready(function() {
 
     var $create = $('#button-create');
 
-
     if ($("[id^=preference]").length) {
         $create.attr({
             disabled: true
@@ -18,10 +17,10 @@ $(document).ready(function() {
             e.preventDefault();
             e.stopPropagation();
         }
-    })
+    });
 
-
-
-
+    $('#show').click(function (e) {
+        $(this).next().modal('show');
+    });
 
 });

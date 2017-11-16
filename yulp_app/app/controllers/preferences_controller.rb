@@ -27,6 +27,7 @@ class PreferencesController < ApplicationController
     if current_user.preference.nil?
       @preference = Preference.new(preference_params)
       @preference.user_id= current_user.id
+      # byebug
       if @preference.save(validate: false)
         flash[:success] = 'Preference created successfully.'
       else
@@ -46,17 +47,10 @@ class PreferencesController < ApplicationController
     if @preference.nil?
       flash[:danger] = "There's no preference for user #{current_user.name}. You cannot delete."
     else
-      @preference.destroy
+      @preference.destroy!
       flash[:success] = "Successfully deleted preference for user #{current_user.name}."
     end
     redirect_to user_preferences_path(current_user)
-  end
-
-
-
-
-  def edit
-
   end
 
   def update
@@ -72,11 +66,6 @@ class PreferencesController < ApplicationController
     # Use this line for normal refreshing page
     redirect_to user_preference_path(current_user, @preference.id)
   end
-
-
-
-
-
 
 
   private

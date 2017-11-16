@@ -1,0 +1,14 @@
+%button#show.btn.btn-block.btn-danger Delete Preference
+.modal.fade#delete-form{tabindex: "-1", role: "dialog", :aria => {:labelledby => "exampleModalLabel", :hidden => true}}
+  .modal-dialog{:role => "document"}
+    .modal-content
+      .modal-header
+        %a{:class => 'close', :data => {:dismiss => 'modal'}} x
+        %h3 Delete Confirmation
+      .modal-body
+        %h4 Are you sure you want to delete the preference?
+      .modal-footer
+        =link_to('Delete',
+                 destroy_all_user_preferences_path(current_user),
+                 method: :post, class: 'btn btn-xs btn-danger', id: 'button-delete')
+        %a{:href => '#', :data => {:dismiss => 'modal'}, :class => 'btn btn-xs btn-success'} Cancel

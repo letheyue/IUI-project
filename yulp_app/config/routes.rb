@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
 
   resources :users do
-    resources :preferences do
+    resources :preferences, except: [:edit, :destroy] do
       collection do
         post 'destroy_all'
       end
@@ -38,8 +38,6 @@ Rails.application.routes.draw do
       get :search
     end
   end
-  # resources :restaurants
-
 
   resources :sessions, only: [:create, :destroy]
   # facebook login & google login
