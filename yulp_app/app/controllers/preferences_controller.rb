@@ -2,7 +2,6 @@ class PreferencesController < ApplicationController
   include SessionsHelper
   include PreferencesHelper
   before_action :validate_login
-  # before_action :set_preference, only: [:edit]
   before_action :valid_user_id
 
   def new
@@ -68,6 +67,9 @@ class PreferencesController < ApplicationController
     else
       flash[:danger] = 'Cannot Update Preference'
     end
+    # Use this line if apply Vue
+    # render :json => {:desc => 'test'}
+    # Use this line for normal refreshing page
     redirect_to user_preference_path(current_user, @preference.id)
   end
 

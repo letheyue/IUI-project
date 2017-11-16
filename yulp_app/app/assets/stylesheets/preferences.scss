@@ -12,11 +12,20 @@ input[type="radio"] {
   background-color: #ff3025;
 }
 .Don\'t-Mind {
-  background-color: #3dff33;
+  background-color: #ffff36;
 }
 .Not-Important {
-  background-color: #ffff36;
+  background-color: #3dff33;
+}
+.Yes {
+  background-color: #ff3025;
+}
+.No {
+  background-color: #3dff33;
 }
 .hide {
   display: none;
+}
+#s-preference_restaurants_per_page{
+  width:70px;
 }
