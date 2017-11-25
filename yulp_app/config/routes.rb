@@ -27,6 +27,8 @@ Rails.application.routes.draw do
         post 'destroy_all'
       end
     end
+    post 'feedback', to: 'feedbacks#save'
+
   end
 
   get '/search', to: 'restaurants#search'
@@ -43,5 +45,6 @@ Rails.application.routes.draw do
   # facebook login & google login
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
+
 
 end

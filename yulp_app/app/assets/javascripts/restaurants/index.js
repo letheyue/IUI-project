@@ -40,6 +40,37 @@ $(document).ready(function() {
     $('.scrlBtn').click(function(){topFunction()});
 
 
+
+    // Feedback Submit
+    $('#show').click(function () {
+        var $modal = $(this).next();
+        $modal.modal('show');
+    });
+    $('#feed_form').submit(function (e) {
+        var local_data = {};
+        var update_url = $('#feed_form')[0].action;
+        var subject = $('#Subject').val();
+        var content = $('#Content').val();
+        local_data['subject'] = subject;
+        local_data['content'] = content;
+
+        $.ajax({
+            url: update_url,
+            type: 'POST',
+            data: local_data
+        }).done(function(data) {
+            // If Vue is applied, then this page can update with static refreshing
+            $('#show').next().modal('hide');
+            $('#feedback-info').removeClass('hide');
+            topFunction();
+        });
+        e.preventDefault();
+        e.stopPropagation();
+        console.log(e)
+    })
+
+
+
 });
 
 function topFunction() {

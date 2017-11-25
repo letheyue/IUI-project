@@ -1,6 +1,10 @@
 <%= javascript_include_tag 'restaurants/index' %>
 
 <%= stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" %>
+<p class="alert alert-success hide", id="feedback-info">
+  Feedback has been saved successfully!
+</p>
+
 <% @restaurant.each_with_index do |restaurant, i| %>
     <div class="container" xmlns="http://www.w3.org/1999/html">
       <div class="ResTitle">

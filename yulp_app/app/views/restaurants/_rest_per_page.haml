@@ -1,3 +1,7 @@
-.dummy{:id => "pre_#{@preference['restaurant_per_page']}"}
-  Current Restaurants Per Page is: #{@preference['restaurant_per_page']}
-= will_paginate(@restaurant, :style => 'color:red')
+.row
+  .col-sm-8
+    .dummy{:id => "pre_#{@preference['restaurant_per_page']}"}
+      Current Restaurants Per Page is: #{@preference['restaurant_per_page']}
+    = will_paginate(@restaurant, :style => 'color:red')
+  .col-sm-4
+    =render :partial => 'modal_feedback_button'

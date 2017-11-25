@@ -1,0 +1,20 @@
+%button#show.btn.btn-block.btn-warning Send Us Feedback
+.modal.fade#feedback-form{tabindex: "-1", role: "dialog", :aria => {:labelledby => "exampleModalLabel", :hidden => true}}
+  .modal-dialog{:role => "document"}
+    .modal-content
+      .modal-header
+        %a{:class => 'close', :data => {:dismiss => 'modal'}} x
+        %h3 Feedback
+      .modal-body
+        %h4 Please enter your feedback below
+        = form_tag(user_feedback_path(current_user), :method => :post, :id => 'feed_form') do
+
+          =label_tag 'Subject'
+          =text_field_tag 'Subject', 'Enter......'
+          %br
+          =label_tag 'Content'
+          =text_area_tag 'Content', 'Enter......'
+      .modal-footer
+        = submit_tag 'Save', :form => 'feed_form', :class => 'btn btn-xs btn-warning', :id => 'submit'
+
+        %a{:href => '#', :data => {:dismiss => 'modal'}, :class => 'btn btn-xs btn-success'} Cancel
