@@ -1,6 +1,7 @@
 $(document).ready(function() {
     var slideIndex = 1;
-    for(var k = 0; k < 5; k++) {
+    var per_page = parseInt( $('[id^=pre_]').attr('id').substring(4) );
+    for(var k = 0; k < per_page; k++) {
         showSlides(slideIndex, k);
     }
 
@@ -14,7 +15,7 @@ $(document).ready(function() {
 
     function showSlides(n, id) {
         var i;
-        var name = "slides" + id
+        var name = "slides" + id;
         var slides = document.getElementsByName(name);
         if (n > slides.length) {slideIndex = 1}
         if (n < 1) {slideIndex = slides.length}
