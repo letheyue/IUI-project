@@ -1,4 +1,3 @@
-.row
-  .col-sm-4
-    %h4{:id => "pre_#{@preference['restaurant_per_page']}"}
-      Current Restaurants Per Page is #{@preference['restaurant_per_page']}
+.dummy{:id => "pre_#{@preference['restaurant_per_page']}"}
+  Current Restaurants Per Page is: #{@preference['restaurant_per_page']}
+= will_paginate(@restaurant, :style => 'color:red')
