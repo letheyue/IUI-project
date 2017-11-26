@@ -1,3 +1,5 @@
+require 'nokogiri'
+
 class RestaurantsController < ApplicationController
   include SessionsHelper
   before_action :validate_login
@@ -17,6 +19,25 @@ class RestaurantsController < ApplicationController
       @restaurant = Restaurant.paginate(:page => params[:page],:per_page => 5).all.order("name ASC")
     end
   end
+
+  def aggregated
+    file = File.new(Rails.root.join('public', 'test.xml'), "wb")
+
+    @preference = get_preference
+    @restaurant = Restaurant.paginate(:page => params[:page],:per_page => @preference['restaurant_per_page']).all.order("name ASC")
+
+    builder = Nokogiri::XML::Builder.new do |xml|
+      xml.markers {
+        @restaurant.each_with_index do |rest, i|
+          xml.marker("id" => i+1, "name" => rest.name, "address" => rest.address, "lat" => rest.coordinates.tr('[]', '').split(',').map(&:to_f)[0], "lng" => rest.coordinates.tr('[]', '').split(',').map(&:to_f)[1])
+        end
+      }
+    end.to_xml
+    file.write builder
+    file.close
+  end
+
+
 
 
   private

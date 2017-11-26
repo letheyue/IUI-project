@@ -1,0 +1,19 @@
+=javascript_include_tag 'restaurants/aggregated'
+=stylesheet_link_tag 'restaurants/aggregated'
+
+
+%h2 Aggregated Map View for Restaurants
+.row
+  .col-sm-9
+    =render :partial => 'map'
+
+    = will_paginate(@restaurant, :style => 'color:red')
+  .col-sm-3
+    #caption
+    -@restaurant.each_with_index do |rest,i|
+      .dummy{:id => "rest_#{i+1}"}
+        %h3.dummy{ :style => 'color:red'}=rest.name
+        .dummy{} Rating: #{rest.rating}
+        -if rest.price != ''
+          .dummy{} Price: #{rest.price}
+        %br

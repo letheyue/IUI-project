@@ -9,3 +9,4 @@
 yulp_app/config/password.yml
 yulp_app/node_modules/
 yulp_app/public/assets/
+yulp_app/public/test.xml

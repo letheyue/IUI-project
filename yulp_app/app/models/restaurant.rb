@@ -8,6 +8,7 @@ class Restaurant < ActiveRecord::Base
   has_many :users, through: :reviews
   has_and_belongs_to_many :categories
 
+
   self.table_name = "restaurants"
 
   def trim_to_empty(str)
@@ -17,7 +18,7 @@ class Restaurant < ActiveRecord::Base
     str
   end
 
-  def name
+  def names
     name = Array.new(@size)
     index = 0
     @business.each do |n|
@@ -27,7 +28,7 @@ class Restaurant < ActiveRecord::Base
     name
   end
 
-  def address
+  def addresses
     address = Array.new(@size)
     index = 0
     @business.each do |a|
@@ -126,7 +127,7 @@ class Restaurant < ActiveRecord::Base
     end
 
     names = Restaurant.name
-    addresses = Restaurant.address
+    addresses = Restaurant.addresses
     popular_times = Restaurant.get_all_popular_times(names, addresses)
     discounts = Restaurant.get_all_discount_info(names, addresses)
 
@@ -159,8 +160,8 @@ class Restaurant < ActiveRecord::Base
         restaurant.country = location["country"]
         restaurant.state = location["state"]
 
-        restaurant.popular_times = popular_times[restaurant.name]
-        restaurant.discount = discounts[restaurant.name]
+        restaurant.popular_times = popular_times[restaurant.names]
+        restaurant.discount = discounts[restaurant.names]
 
         restaurant.open_hour = Restaurant.add_open_hour(business["id"])
 
