@@ -42,6 +42,7 @@ Rails.application.routes.draw do
     end
   end
 
+
   resources :sessions, only: [:create, :destroy]
   # facebook login & google login
   get 'auth/:provider/callback', to: 'sessions#create'

@@ -4,7 +4,7 @@
 <p class="alert alert-success hide", id="feedback-info">
   Feedback has been saved successfully!
 </p>
-
+<% review = @reviews%>
 <% @restaurant.each_with_index do |restaurant, i| %>
     <div class="container" xmlns="http://www.w3.org/1999/html">
       <div class="ResTitle">
@@ -43,6 +43,7 @@
               src=<%="#{address}"%> allowfullscreen>
               </iframe>
           </div>
+          <div class="detail_section">
           <h3>Other Details</h3>
           <% if @preference['discount'] %>
             Discount : <%= restaurant[:discount] %><br/>
@@ -51,9 +52,55 @@
             Popular times: <%= restaurant[:popular_times] %>
           <% end %>
           <br>lol
-        </div>
-      </div>
-    </div>
+          </div>
+          <div class="reviews">
+            <div>
+              <div style="background-color:#B00100; color:#ffffff; height:25px;"><h3>Reviews<button type="button" data-toggle="modal" style="float: right; background: #850100; border: none; height: 24px; font-size:16px"  data-target=<%="##{id_name}review"%>>Make Review</button>
+              </h3></div>
+              <div class="modal fade" id=<%="#{id_name}review"%> role="dialog">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title">Make review</h4>
+                    </div>
+                        <%= form_for @review do |f| %>
+                        <div class="modal-body">
+                          <%= f.label :text %>
+                          <%= f.text_field :text %>
+                          <%= f.submit %>
+                        </div>
+                        <% end %>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="reviewcontainer">
+              <% @reviewurl%>
+              <table>
+                <%review.each do |review|%>
+                    <%if review.restaurant_id == restaurant.id then %>
+                      <% user = review.user_name;  userrating = review.rating;  userreview = review.text;  reviewurl = review.review_url%>
+                      <tr>
+                        <td style="padding-right:20px;"><%= user%></td>
+                        <td style="padding-top: 10px;">
+                          <span class=<%if userrating >= 1 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></span>
+                          <span class=<%if userrating >= 2 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></span>
+                          <span class=<%if userrating >= 3 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></span>
+                          <span class=<%if userrating >= 4 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></span>
+                          <span class=<%if userrating >= 5 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></span></br>
+                          <%= userreview%><%= link_to "show more", reviewurl, target: :_blank%></td>
+                      </tr>
+                    <%end%>
+                <%end%>
+              </table>
+            </div>
+          </div>
+         </div>
 <%end%>
 <hr/>
 <button class="scrlBtn" title="Go to top">Top</button>
