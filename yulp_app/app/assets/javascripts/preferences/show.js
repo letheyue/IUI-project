@@ -5,9 +5,9 @@ $(document).ready(function() {
     $body.on('click', "[id^='td_']", function (event) {
         var field_name = this.id.substring(3);
         if(field_name === 'restaurants_per_page') {
-            $(this).replaceWith("<select name=\"preference["+field_name+"]\" id=\"s-preference_"+field_name+"\"><option value=\"10\">10</option>\n" +
-                "<option value=\"20\">20</option>\n" +
-                "<option value=\"30\">30</option>\n" +
+            $(this).replaceWith("<select name=\"preference["+field_name+"]\" id=\"s-preference_"+field_name+"\"><option value=\"5\">5</option>\n" +
+                "<option value=\"10\">10</option>\n" +
+                "<option value=\"15\">15</option>\n" +
                 "<option value=\"All\">All</option></select>");
         } else {
             $(this).replaceWith("<input type=\"hidden\" name=\"preference["+field_name+"]\" value=\"\" />" +
