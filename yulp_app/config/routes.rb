@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   resources :users
   resources :restaurants
   resources :preferences
+  resources :reviews
 
   resources :sessions, only: [:create, :destroy]
   # facebook login & google login

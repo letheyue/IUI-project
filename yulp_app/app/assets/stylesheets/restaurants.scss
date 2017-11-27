@@ -23,7 +23,7 @@ h4{
   font-size: 100%;
 }
 p {
-  padding: 10%;
+  padding: 20%;
   font-size: 13px;
   color: #000000;
 }
@@ -138,8 +138,10 @@ input[type=text]:focus {
   to {opacity: 1}
 }
 .reviews{
+  position: relative;
   padding: 10px;
-  width:340px;
+  width: 340px;
+  float: left;
 }
 .reviewcontainer{
   width: 320px;
@@ -164,4 +166,21 @@ input[type=text]:focus {
 }
 .scrlBtn:hover {
   background-color: #555; /* Add a dark-grey background on hover */
+}
+
+.detail_section{
+  height: 350px;
+  padding: 10px;
+}
+
+.popout_grey_section{
+  background-color: #777777;
+  color: white;
+  height: auto;
+  width: inherit;
+  position: absolute;
+  bottom: 0;
+  opacity: 0.5;
+  text-align: center;
+  display: block;
 }
