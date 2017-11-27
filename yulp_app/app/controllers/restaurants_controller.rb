@@ -6,9 +6,9 @@ class RestaurantsController < ApplicationController
   # before_action :valid_user_id
 
   def index
-
     @preference = get_preference
     @restaurant = Restaurant.paginate(:page => params[:page],:per_page => @preference['restaurant_per_page']).all.order("name ASC")
+    @reviews = Review.all
   end
 
   def search
@@ -101,9 +101,5 @@ class RestaurantsController < ApplicationController
       redirect_to login_path
     end
   end
-
-
-
-
 
 end
