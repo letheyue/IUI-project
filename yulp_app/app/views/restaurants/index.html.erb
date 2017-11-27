@@ -22,13 +22,13 @@
         <%- id_name = "toggle"+ i.to_s%>
         <h4><%= restaurant[:address]  %>
           <% if @preference['rating'] %>
-            <div> Rating : <%= restaurant[:rating] %>
-              <div class=<%if restaurant[:rating] >= 1 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></div>
-              <div class=<%if restaurant[:rating] >= 2 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></div>
-              <div class=<%if restaurant[:rating] >= 3 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></div>
-              <div class=<%if restaurant[:rating] >= 4 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></div>
-              <div class=<%if restaurant[:rating] >= 5 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></div>
-            </div>
+              Rating : <%= restaurant[:rating] %>
+              <span class=<%if restaurant[:rating] >= 1 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></span>
+              <span class=<%if restaurant[:rating] >= 2 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></span>
+              <div class=<%if restaurant[:rating] >= 3 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></span>
+              <div class=<%if restaurant[:rating] >= 4 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></span>
+              <div class=<%if restaurant[:rating] >= 5 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></span>
+              (<%= restaurant[:review_count]%>)
           <% end %>
         </h4>
         <% location = restaurant[:name].tr(" ", "+") + "," + restaurant[:address].tr(" ", "+")
@@ -80,6 +80,9 @@
             </div>
           </div>
          </div>
+      </div>
+    </div>
+
 <%end%>
 <hr/>
 <button class="scrlBtn" title="Go to top">Top</button>
