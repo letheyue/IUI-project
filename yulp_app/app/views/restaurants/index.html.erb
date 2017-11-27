@@ -55,31 +55,9 @@
           </div>
           <div class="reviews">
             <div>
-              <div style="background-color:#B00100; color:#ffffff; height:25px;"><h3>Reviews<button type="button" data-toggle="modal" style="float: right; background: #850100; border: none; height: 24px; font-size:16px"  data-target=<%="##{id_name}review"%>>Make Review</button>
-              </h3></div>
-              <div class="modal fade" id=<%="#{id_name}review"%> role="dialog">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal">&times;</button>
-                      <h4 class="modal-title">Make review</h4>
-                    </div>
-                        <%= form_for @review do |f| %>
-                        <div class="modal-body">
-                          <%= f.label :text %>
-                          <%= f.text_field :text %>
-                          <%= f.submit %>
-                        </div>
-                        <% end %>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
+              <div style="background-color:#B00100; color:#ffffff; height:25px;"><h3>Reviews</h3></div>
             </div>
-            <div class="reviewcontainer">
+            <div class="reviewcontainer" >
               <% @reviewurl%>
               <table>
                 <%review.each do |review|%>
@@ -98,6 +76,7 @@
                     <%end%>
                 <%end%>
               </table>
+              <div style="text-align: center"><%=link_to "See more on Yelp", restaurant[:url], {:target => "_blank"} %></div>
             </div>
           </div>
          </div>
