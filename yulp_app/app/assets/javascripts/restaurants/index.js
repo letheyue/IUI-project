@@ -42,7 +42,7 @@ $(document).ready(function() {
 
 
     // Feedback Submit
-    $('#show').click(function () {
+    $('#show').click(function (e) {
         var $modal = $(this).next();
         $modal.modal('show');
     });

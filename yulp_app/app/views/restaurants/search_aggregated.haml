@@ -2,15 +2,14 @@
 =stylesheet_link_tag 'restaurants/aggregated'
 
 
-%h2 Aggregated Map View for Restaurants
+%h2 Aggregated Map for Searching '#{params[:search]}'
 .row
   .col-sm-9
     =render :partial => 'map'
 
     = will_paginate(@restaurant, :style => 'color:red')
-    =link_to('Back to All Restaurants',
-            restaurants_path(:page => params[:page]), :class => 'btn btn-primary')
-
+    =link_to('Back to Search',
+            search_restaurants_path(:search => params[:search], :page => params[:page]), :class => 'btn btn-primary')
   .col-sm-3
     #caption
     -@restaurant.each_with_index do |rest,i|

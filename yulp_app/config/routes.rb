@@ -31,7 +31,7 @@ Rails.application.routes.draw do
 
   end
 
-  get '/search', to: 'restaurants#search'
+  # get '/search', to: 'restaurants#search'
 
   resources :users
 
@@ -39,6 +39,7 @@ Rails.application.routes.draw do
     collection do
       get :search
       get :aggregated
+      get :search_aggregated
     end
   end
 

@@ -13,12 +13,40 @@ class RestaurantsController < ApplicationController
 
   def search
     # @restaurant = Restaurant.all.order("name ASC").page params[:page]
+    @preference = get_preference
     if params[:search]
-      @restaurant = Restaurant.paginate(:page => params[:page],:per_page => 5).search(params[:search])
+      @restaurant = Restaurant.paginate(:page => params[:page],:per_page => @preference['restaurant_per_page']).search(params[:search])
     else
-      @restaurant = Restaurant.paginate(:page => params[:page],:per_page => 5).all.order("name ASC")
+      @restaurant = Restaurant.paginate(:page => params[:page],:per_page => @preference['restaurant_per_page']).all.order("name ASC")
     end
   end
+
+  def search_aggregated
+    # byebug
+    @preference = get_preference
+
+    if params[:search]
+      @restaurant = Restaurant.paginate(:page => params[:page],:per_page => @preference['restaurant_per_page']).search(params[:search])
+    else
+      @restaurant = Restaurant.paginate(:page => params[:page],:per_page => @preference['restaurant_per_page']).all.order("name ASC")
+    end
+
+    file = File.new(Rails.root.join('public', 'test.xml'), "wb")
+    builder = Nokogiri::XML::Builder.new do |xml|
+      xml.markers {
+        @restaurant.each_with_index do |rest, i|
+          xml.marker("id" => i+1, "name" => rest.name, "address" => rest.address, "lat" => rest.coordinates.tr('[]', '').split(',').map(&:to_f)[0], "lng" => rest.coordinates.tr('[]', '').split(',').map(&:to_f)[1])
+        end
+      }
+    end.to_xml
+    file.write builder
+    file.close
+    # byebug
+    # render 'aggregated'
+
+  end
+
+
 
   def aggregated
     file = File.new(Rails.root.join('public', 'test.xml'), "wb")

@@ -1,6 +1,7 @@
 $(document).ready(function() {
     var slideIndex = 1;
-    for(var k = 0; k < 5; k++) {
+    var per_page = parseInt( $('[id^=pre_]').attr('id').substring(4) );
+    for(var k = 0; k < per_page; k++) {
         showSlides(slideIndex, k);
     }
 
@@ -38,7 +39,33 @@ $(document).ready(function() {
     // When the user clicks on the button, scroll to the top of the document
     $('.scrlBtn').click(function(){topFunction()});
 
+    // Feedback Submit
+    $('#show').click(function (e) {
+        var $modal = $(this).next();
+        $modal.modal('show');
+    });
+    $('#feed_form').submit(function (e) {
+        var local_data = {};
+        var update_url = $('#feed_form')[0].action;
+        var subject = $('#Subject').val();
+        var content = $('#Content').val();
+        local_data['subject'] = subject;
+        local_data['content'] = content;
 
+        $.ajax({
+            url: update_url,
+            type: 'POST',
+            data: local_data
+        }).done(function(data) {
+            // If Vue is applied, then this page can update with static refreshing
+            $('#show').next().modal('hide');
+            $('#feedback-info').removeClass('hide');
+            topFunction();
+        });
+        e.preventDefault();
+        e.stopPropagation();
+        console.log(e)
+    })
 });
 
 function topFunction() {

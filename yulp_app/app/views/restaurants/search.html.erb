@@ -2,10 +2,21 @@
 
 <%= stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" %>
 
-<%= form_tag(search_restaurants_path, :method => "get", id: "search-form") do %>
-    <%= text_field_tag :search, params[:search], placeholder: "Search restaurant's name or address or phone number or city or zip_code" %>
-    <%= submit_tag "Search", :name => nil %>
-<% end %>
+<p class="alert alert-success hide" id="feedback-info">
+  Feedback has been saved successfully!
+</p>
+<div class="row">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4">
+    <%= form_tag(search_restaurants_path, :method => "get", id: "search-form") do %>
+        <%= label_tag 'Search for...' %>
+        <%= text_field_tag :search, params[:search], placeholder: "Search restaurant's name or address or phone number or city or zip_code" %>
+        <%= submit_tag "Search", :name => nil, :class => 'btn btn-primary btn-block' %>
+    <% end %>
+  </div>
+</div>
+<hr/>
+
 
 <% @restaurant.each_with_index do |restaurant, i| %>
     <div class ="container">
@@ -53,7 +64,7 @@
       </div>
     </div>
 <%end%>
+<hr/>
 <button class="scrlBtn" title="Go to top">Top</button>
-
-<%= will_paginate(@restaurant, :style => 'color:red') %>
+<%= render :partial => 'rest_per_page' %>
 
