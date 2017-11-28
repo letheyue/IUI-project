@@ -28,4 +28,5 @@
 node_modules/
 test/
 .idea/
+public/test.xml
 

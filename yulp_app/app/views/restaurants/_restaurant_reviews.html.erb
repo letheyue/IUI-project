@@ -1,0 +1,22 @@
+<div class="reviews">
+  <div>
+    <div style="background-color:#B00100; color:#ffffff; height:25px;"><h3>Reviews</h3></div>
+  </div>
+  <div class="reviewcontainer" >
+    <table>
+      <%reviews.each do |review|%>
+        <%if review.restaurant_id == restaurant.id %>
+          <% user = review.user_name;  user_rating = review.rating;  user_review = review.text;  review_url = review.review_url%>
+          <tr>
+            <td style="padding-right:20px;"><%= user%></td>
+            <td style="padding-top: 10px;">
+              <%= render :partial => 'restaurant_stars', :locals => {:rating => user_rating }   %>
+              <br/>
+              <%= user_review%><%= link_to "show more", review_url, target: :_blank%></td>
+          </tr>
+        <%end%>
+      <%end%>
+    </table>
+    <div style="text-align: center"><%=link_to "See more on Yelp", restaurant[:url], {:target => "_blank"} %></div>
+  </div>
+</div>

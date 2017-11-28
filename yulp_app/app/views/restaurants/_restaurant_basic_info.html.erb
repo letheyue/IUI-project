@@ -1,0 +1,20 @@
+<div class="displaygraph">
+  <%- image_src = restaurant[:image_url] %>
+  <% restaurant_name = "slides"+i.to_s%>
+  <div class="slideshow-container">
+    <div class="mySlides" name = <%="#{restaurant_name}"%> >
+      <div class="numbertext"><%= i%></div>
+      <%= image_tag image_src, :style => 'height:120px;width:120px' %>
+    </div>
+  </div>
+</div>
+<h2><%= restaurant[:name] %></h2>
+<h4><%= restaurant[:address]  %>
+  <% if @preference['rating'] %>
+    Rating : <%= restaurant[:rating] %>
+    <%= render :partial => 'restaurant_stars', :locals => {:rating => restaurant[:rating] }   %>
+    <% if @preference['reviews'] %>
+      (<%= restaurant[:review_count]%>)
+    <% end %>
+  <% end %>
+</h4>

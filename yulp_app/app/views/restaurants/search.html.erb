@@ -1,6 +1,5 @@
-<%= javascript_include_tag 'restaurants/search' %>
 
-<%= stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" %>
+<%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' %>
 
 <p class="alert alert-success hide" id="feedback-info">
   Feedback has been saved successfully!
@@ -17,34 +16,13 @@
 </div>
 <hr/>
 
-<% review = @reviews%>
 <% @restaurant.each_with_index do |restaurant, i| %>
     <div class="container" xmlns="http://www.w3.org/1999/html">
       <div class="ResTitle">
-        <div class="displaygraph">
-          <%- image_src = restaurant[:image_url] %>
-          <% restaurant_name = "slides"+i.to_s%>
-          <div class="slideshow-container">
-            <div class="mySlides" name = <%="#{restaurant_name}"%> >
-              <div class="numbertext"><%= i%></div>
-              <%= image_tag image_src, :style => 'height:120px;width:120px' %>
-            </div>
-          </div>
-        </div>
-        <h2><%= restaurant[:name] %></h2>
+        <%= render :partial => 'restaurant_basic_info', :locals => {:restaurant => restaurant, :i => i} %>
+
         <%- id_name = "toggle"+ i.to_s%>
-        <h4><%= restaurant[:address]  %>
-          <% if @preference['rating'] %>
-              Rating : <%= restaurant[:rating] %>
-              <span class=<%if restaurant[:rating] >= 1 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></span>
-              <span class=<%if restaurant[:rating] >= 2 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></span>
-              <span class=<%if restaurant[:rating] >= 3 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></span>
-              <span class=<%if restaurant[:rating] >= 4 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></span>
-              <span class=<%if restaurant[:rating] >= 5 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></span>
-              (<%= restaurant[:review_count]%>)
-          <% end %>
-        </h4>
-        <% location = restaurant[:name].tr(" ", "+") + "," + restaurant[:address].tr(" ", "+")
+        <% location = ERB::Util.url_encode(restaurant[:name] + "," + restaurant[:address])
            address = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyC1crIIEC4So_FjEGhQ2QX1W9dc7eeM2Ds&q=' + location%>
         <button type="button" class="mybtn collapsed" data-toggle="collapse" data-target=<%="##{id_name}"%>></button>
         <div id= <%="#{id_name}"%>  class="collapse">
@@ -56,48 +34,14 @@
             src=<%="#{address}"%> allowfullscreen>
             </iframe>
           </div>
-          <div class="detail_section">
-            <h3>Other Details</h3>
-            <% if @preference['discount'] %>
-                Discount : <%= restaurant[:discount] %><br/>
-            <% end %>
-            <% if @preference['popular'] %>
-                Popular times: <%= restaurant[:popular_times] %>
-            <% end %>
-            <br>lol
-          </div>
-          <div class="reviews">
-            <div>
-              <div style="background-color:#B00100; color:#ffffff; height:25px;"><h3>Reviews</h3></div>
-            </div>
-            <div class="reviewcontainer" >
-              <% @reviewurl%>
-              <table>
-                <%review.each do |review|%>
-                    <%if review.restaurant_id == restaurant.id then %>
-                        <% user = review.user_name;  userrating = review.rating;  userreview = review.text;  reviewurl = review.review_url%>
-                        <tr>
-                          <td style="padding-right:20px;"><%= user%></td>
-                          <td style="padding-top: 10px;">
-                            <span class=<%if userrating >= 1 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></span>
-                          <span class=<%if userrating >= 2 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></span>
-                          <span class=<%if userrating >= 3 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></span>
-                          <span class=<%if userrating >= 4 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></span>
-                          <span class=<%if userrating >= 5 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></span></br>
-                          <%= userreview%><%= link_to "show more", reviewurl, target: :_blank%></td>
-                        </tr>
-                    <%end%>
-                <%end%>
-              </table>
-              <div style="text-align: center"><%=link_to "See more on Yelp", restaurant[:url], {:target => "_blank"} %></div>
-            </div>
-          </div>
+          <%= render :partial => 'restaurant_other_details', :locals => {:restaurant => restaurant} %>
+          <%= render :partial => 'restaurant_reviews', :locals => {:restaurant => restaurant, :reviews => @reviews} %>
         </div>
       </div>
     </div>
-
 <%end%>
 <hr/>
 <button class="scrlBtn" title="Go to top">Top</button>
-<%= render :partial => 'rest_per_page' %>
+<%= render :partial => 'footer_button_group' %>
 
+<%= javascript_include_tag 'restaurants/search' %>
