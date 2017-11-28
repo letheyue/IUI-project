@@ -3,8 +3,8 @@
   <% restaurant_name = "slides"+i.to_s%>
   <div class="slideshow-container">
     <div class="mySlides" name = <%="#{restaurant_name}"%> >
-      <div class="numbertext"><%= i%></div>
-      <%= image_tag image_src, :style => 'height:120px;width:120px' %>
+      <div class="numbertext"><%= i+1%></div>
+      <%= image_tag image_src, :style => 'height:160px;width:240px' %>
     </div>
   </div>
 </div>

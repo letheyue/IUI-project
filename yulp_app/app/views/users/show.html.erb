@@ -1,15 +1,35 @@
 <!--Example use of Asset pipeline:-->
 <%= javascript_include_tag 'users/show' %>
 
-<% provide(:title, @user.name) %>
+<% provide(:title, current_user.name) %>
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
       <h1>
         Profile Page for User:
-        <%= @user.name %>
+        <%= current_user.name %>
       </h1>
       <%= render :partial => 'profile_button_groups' %>
+    </section>
+  </aside>
+  <aside class="col-md-4">
+    <section class="reviews">
+      <%- if @reviews.present? %>
+        <%= render :partial => 'review_details', :locals => {:reviews => @reviews} %>
+      <%- else %>
+        <h1> You have no reviews yet! </h1>
+        <hr />
+      <%- end %>
+    </section>
+  </aside>
+  <aside class="col-md-4">
+    <section class="histories">
+      <%- if @histories.present? %>
+          <%= render :partial => 'search_history', :locals => {:histories => @histories} %>
+      <%- else %>
+          <h1> You have no search histories yet! </h1>
+          <hr />
+      <%- end %>
     </section>
   </aside>
 </div>

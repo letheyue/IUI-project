@@ -8,6 +8,7 @@ require 'csv'
 #   Character.create(name: 'Luke', movie: movies.first)
 
 user1 = User.create({:name => 'admin', :email => 'admin@sample.com', :password => '123456'})
+user2 = User.create({:name => 'defaultUser', :email => 'default@sample.com', :password => '123456'})
 
 
 # Load data from CSV file:

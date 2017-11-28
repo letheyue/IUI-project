@@ -40,6 +40,10 @@ class StaticPagesController < ApplicationController
   end
 
   def contact
+    byebug
 
+    # Restaurant.all.each do |r|
+    #   logger.info(eval(r.popular_times))
+    # end
   end
 end

@@ -4,7 +4,7 @@
     Discount : <%= restaurant[:discount] %><br/>
   <% end %>
   <% if @preference['popular'] %>
-    Popular times: <%= restaurant[:popular_times] %>
+    Popular times:
+       <%= column_chart(get_popular_time(restaurant), download: true, height: '270px', width: '75%') %>
   <% end %>
-  <br>lol
 </div>

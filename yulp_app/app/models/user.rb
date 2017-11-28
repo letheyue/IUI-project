@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :reviews
   has_many :restaurants, through: :reviews
   has_one :preference
+  has_many :search_histories
 
   before_save { self.email = email.downcase }
   validates :name, presence: true, length: { maximum: 50 }

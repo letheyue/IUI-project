@@ -8,7 +8,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    # @user = current_user
+    @reviews = current_user.reviews
+    @histories = current_user.search_histories.order(updated_at: :desc)
   end
 
   def create

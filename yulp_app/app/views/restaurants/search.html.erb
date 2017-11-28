@@ -1,3 +1,4 @@
+<%= javascript_include_tag 'restaurants/search' %>
 
 <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' %>
 
@@ -26,16 +27,31 @@
            address = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyC1crIIEC4So_FjEGhQ2QX1W9dc7eeM2Ds&q=' + location%>
         <button type="button" class="mybtn collapsed" data-toggle="collapse" data-target=<%="##{id_name}"%>></button>
         <div id= <%="#{id_name}"%>  class="collapse">
-          <div class = "map">
-            <iframe
-            width="300"
-            height="300"
-            frameborder="0" style="border:0"
-            src=<%="#{address}"%> allowfullscreen>
-            </iframe>
+          <div class="row">
+            <div class="col-sm-4">
+              <div class = "map">
+                <iframe
+                width="300"
+                height="300"
+                frameborder="0" style="border:0"
+                src=<%="#{address}"%> allowfullscreen>
+                </iframe>
+              </div>
+            </div>
+            <div class="col-sm-8">
+              <%= render :partial => 'restaurant_other_details', :locals => {:restaurant => restaurant} %>
+            </div>
           </div>
-          <%= render :partial => 'restaurant_other_details', :locals => {:restaurant => restaurant} %>
-          <%= render :partial => 'restaurant_reviews', :locals => {:restaurant => restaurant, :reviews => @reviews} %>
+          <hr/>
+          <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-8">
+              <%= render :partial => 'restaurant_reviews', :locals => {:restaurant => restaurant, :reviews => @reviews} %>
+            </div>
+          </div>
+
+
+
         </div>
       </div>
     </div>
@@ -44,4 +60,3 @@
 <button class="scrlBtn" title="Go to top">Top</button>
 <%= render :partial => 'footer_button_group' %>
 
-<%= javascript_include_tag 'restaurants/search' %>
