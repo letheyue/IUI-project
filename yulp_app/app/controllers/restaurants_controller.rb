@@ -15,7 +15,6 @@ class RestaurantsController < ApplicationController
 
   def search
     @preference = get_preference
-
     raw_results = Restaurant.custom_search(params[:search], @preference)
 
     # byebug
@@ -30,8 +29,6 @@ class RestaurantsController < ApplicationController
     # Use of Review.all will have performance issues, which is not preferred
     # For now, apply cache mechanism
     @reviews = Review.get_all_reviews
-
-    # byebug
   end
 
   def search_aggregated
