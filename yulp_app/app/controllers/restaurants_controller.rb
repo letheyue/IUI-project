@@ -15,7 +15,6 @@ class RestaurantsController < ApplicationController
 
   def search
     @preference = get_preference
-
     raw_results = Restaurant.custom_search(params[:search], @preference)
 
     # byebug
@@ -27,11 +26,10 @@ class RestaurantsController < ApplicationController
     @restaurant = WillPaginate::Collection.create(params[:page] || 1, @preference['restaurant_per_page'] || 5, raw_results.length) do |pager|
       pager.replace raw_results[pager.offset, pager.per_page].to_a
     end
+
     # Use of Review.all will have performance issues, which is not preferred
     # For now, apply cache mechanism
     @reviews = Review.get_all_reviews
-
-    # byebug
   end
 
   def search_aggregated

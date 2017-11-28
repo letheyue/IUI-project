@@ -16,7 +16,6 @@
   </div>
 </div>
 <hr/>
-
 <% @restaurant.each_with_index do |restaurant, i| %>
     <div class="container" xmlns="http://www.w3.org/1999/html">
       <div class="ResTitle">
@@ -49,12 +48,10 @@
               <%= render :partial => 'restaurant_reviews', :locals => {:restaurant => restaurant, :reviews => @reviews} %>
             </div>
           </div>
-
-
-
         </div>
       </div>
     </div>
+
 <%end%>
 <hr/>
 <button class="scrlBtn" title="Go to top">Top</button>
