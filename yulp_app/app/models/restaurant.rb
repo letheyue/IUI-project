@@ -225,6 +225,7 @@ class Restaurant < ActiveRecord::Base
     end
     result
 
+
   end
 
 
