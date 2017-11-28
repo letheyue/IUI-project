@@ -8,27 +8,33 @@ class RestaurantsController < ApplicationController
   def index
     @preference = get_preference
     @restaurant = Restaurant.paginate(:page => params[:page],:per_page => @preference['restaurant_per_page']).all.order("name ASC")
-    @reviews = Review.all
+    # Use of Review.all will have performance issues, which is not preferred
+    # For now, apply cache mechanism
+    @reviews = Review.get_all_reviews
   end
 
   def search
-    # @restaurant = Restaurant.all.order("name ASC").page params[:page]
     @preference = get_preference
-    if params[:search]
-      @restaurant = Restaurant.paginate(:page => params[:page],:per_page => @preference['restaurant_per_page']).search(params[:search])
-    else
-      @restaurant = Restaurant.paginate(:page => params[:page],:per_page => @preference['restaurant_per_page']).all.order("name ASC")
+
+    @raw_results = Restaurant.custom_search(params[:search], @preference)
+
+    @restaurant = WillPaginate::Collection.create(params[:page] || 1, @preference['restaurant_per_page'] || 5, @raw_results.length) do |pager|
+      pager.replace @raw_results[pager.offset, pager.per_page].to_a
     end
+    # Use of Review.all will have performance issues, which is not preferred
+    # For now, apply cache mechanism
+    @reviews = Review.get_all_reviews
+
   end
 
   def search_aggregated
     # byebug
     @preference = get_preference
 
-    if params[:search]
-      @restaurant = Restaurant.paginate(:page => params[:page],:per_page => @preference['restaurant_per_page']).search(params[:search])
-    else
-      @restaurant = Restaurant.paginate(:page => params[:page],:per_page => @preference['restaurant_per_page']).all.order("name ASC")
+    @raw_results = Restaurant.custom_search(params[:search], @preference)
+
+    @restaurant = WillPaginate::Collection.create(params[:page] || 1, @preference['restaurant_per_page'] || 5, @raw_results.length) do |pager|
+      pager.replace @raw_results[pager.offset, pager.per_page].to_a
     end
 
     file = File.new(Rails.root.join('public', 'test.xml'), "wb")
@@ -42,10 +48,7 @@ class RestaurantsController < ApplicationController
     file.write builder
     file.close
     # byebug
-    # render 'aggregated'
-
   end
-
 
 
   def aggregated
@@ -79,12 +82,23 @@ class RestaurantsController < ApplicationController
       preference['reviews'] = raw.show_reviews
       preference['discount'] = raw.show_discount
       preference['popular'] = raw.show_popular_time
-      preference['restaurant_per_page'] = raw.restaurants_per_page || 5
+      preference['restaurant_per_page'] = raw.restaurants_per_page
+      preference['weight_price'] = raw.price - 2
+      preference['weight_discount'] = raw.discount - 2
+      preference['weight_popularity'] = raw.popularity - 2
+      preference['weight_rating'] = raw.rating - 2
+      preference['weight_crowded'] = raw.crowded - 2
     end
     preference['restaurant_per_page'] ||= 5
+    preference['weight_price'] ||= 0
+    preference['weight_discount'] ||= 0
+    preference['weight_popularity'] ||= 0
+    preference['weight_rating'] ||= 0
+    preference['weight_crowded'] ||= 0
+
+    # byebug
     preference
   end
-
 
 
   def valid_user_id
