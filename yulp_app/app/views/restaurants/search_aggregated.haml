@@ -4,7 +4,7 @@
 %h2 Aggregated Map for Searching '#{params[:search]}'
 .row
   .col-sm-9
-    =render :partial => 'map'
+    =render :partial => 'aggregated_map'
 
     = will_paginate(@restaurant, :style => 'color:red')
     =link_to('Back to Search',

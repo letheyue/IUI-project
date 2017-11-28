@@ -43,4 +43,18 @@ class Review < ApplicationRecord
 
     @fetched = true
   end
+
+
+
+
+  def self.get_all_reviews
+    # Apply Cache
+    unless @results
+      @results = Review.all
+    end
+    return @results
+  end
+
+
+
 end

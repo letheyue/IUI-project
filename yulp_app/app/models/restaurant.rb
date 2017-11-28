@@ -185,10 +185,44 @@ class Restaurant < ActiveRecord::Base
     @fetched = true
   end
 
+
+  # The following is for Data Manipulation
+
   def self.search(search)
     search = search.downcase.gsub(/\-/, '')
     where("lower(name) LIKE ? OR lower(address) LIKE ? OR lower(city) LIKE ? OR lower(zip_code) LIKE ? OR lower(phone) LIKE ?", "%#{search}%", "%#{search}%","%#{search}%", "%#{search}%", "%#{search}%")
   end
+
+
+  def self.custom_search( search_str, preference)
+    # Apply cache technique
+    # Do not cache if search_str == nil
+    #   => Otherwise it will cache all the restaurants
+    if @term &&  (search_str && @term == search_str)
+      logger.info('Same Term Encountered.')
+      return @raw_results
+    else
+      @raw_results = Restaurant.search(search_str || '').sort{ |a,b| b.rating.to_f <=> a.rating.to_f}
+      if search_str
+        @term = search_str
+      else
+        @term = ''
+      end
+
+      logger.info("Term is:#{@term}")
+      return @raw_results
+    end
+  end
+
+  def calculate_overall_weight_for_restaurant (restaurant, preference)
+
+  end
+
+
+
+
+
+
 
 
 end
