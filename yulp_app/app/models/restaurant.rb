@@ -219,6 +219,7 @@ class Restaurant < ActiveRecord::Base
   def self.calculate_overall_weight_for_restaurant (restaurant, preference)
 
     restaurant.rating.to_f
+
   end
 
 
