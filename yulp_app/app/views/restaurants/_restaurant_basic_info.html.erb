@@ -10,6 +10,7 @@
 </div>
 <h2><%= restaurant[:name] %></h2>
 <h4><%= restaurant[:address]  %>
+  Price: <%= restaurant[:price] %>
   <% if @preference['rating'] %>
     Rating : <%= restaurant[:rating] %>
     <%= render :partial => 'restaurant_stars', :locals => {:rating => restaurant[:rating] }   %>

@@ -90,18 +90,18 @@ class RestaurantsController < ApplicationController
       preference['discount'] = raw.show_discount
       preference['popular'] = raw.show_popular_time
       preference['restaurant_per_page'] = raw.restaurants_per_page
-      preference['weight_price'] = raw.price - 2
-      preference['weight_discount'] = raw.discount - 2
-      preference['weight_popularity'] = raw.popularity - 2
-      preference['weight_rating'] = raw.rating - 2
-      preference['weight_crowded'] = raw.crowded - 2
+      preference['weight_price'] = raw.price
+      preference['weight_discount'] = raw.discount
+      preference['weight_popularity'] = raw.popularity
+      preference['weight_rating'] = raw.rating
+      preference['weight_crowded'] = raw.crowded
     end
     preference['restaurant_per_page'] ||= 5
-    preference['weight_price'] ||= 0
-    preference['weight_discount'] ||= 0
-    preference['weight_popularity'] ||= 0
-    preference['weight_rating'] ||= 0
-    preference['weight_crowded'] ||= 0
+    preference['weight_price'] ||= 2
+    preference['weight_discount'] ||= 2
+    preference['weight_popularity'] ||= 2
+    preference['weight_rating'] ||= 2
+    preference['weight_crowded'] ||= 2
 
     # byebug
     preference

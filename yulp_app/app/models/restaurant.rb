@@ -216,9 +216,15 @@ class Restaurant < ActiveRecord::Base
     end
   end
 
-  def self.calculate_overall_weight_for_restaurant (restaurant, preference)
+  def self.calculate_overall_weight_for_restaurant (restaurant, prefer)
+  # byebug
+    if restaurant.price.size != 0
+      result = (restaurant.rating.to_f * prefer['weight_rating'] * 1 + (5-restaurant.price.size) * prefer['weight_price'] + restaurant.discount.to_f / 40 * prefer['weight_discount'] )
+    else
+      result = (restaurant.rating.to_f * prefer['weight_rating'] * 1 + 3 * prefer['weight_price'] +restaurant.discount.to_f / 40 * prefer['weight_discount'] )
+    end
+    result
 
-    restaurant.rating.to_f
   end
 
 
