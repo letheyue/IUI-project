@@ -16,11 +16,11 @@
   </div>
 </div>
 <hr/>
+
 <% @restaurant.each_with_index do |restaurant, i| %>
     <div class="container" xmlns="http://www.w3.org/1999/html">
       <div class="ResTitle">
         <%= render :partial => 'restaurant_basic_info', :locals => {:restaurant => restaurant, :i => i} %>
-
         <%- id_name = "toggle"+ i.to_s%>
         <% location = ERB::Util.url_encode(restaurant[:name] + "," + restaurant[:address])
            address = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyC1crIIEC4So_FjEGhQ2QX1W9dc7eeM2Ds&q=' + location%>
@@ -48,11 +48,9 @@
               <%= render :partial => 'restaurant_reviews', :locals => {:restaurant => restaurant, :reviews => @reviews} %>
             </div>
           </div>
-
         </div>
       </div>
     </div>
-
 <%end%>
 <hr/>
 <%= render :partial => 'footer_button_group' %>
