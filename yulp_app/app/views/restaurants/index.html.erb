@@ -8,29 +8,8 @@
 <% @restaurant.each_with_index do |restaurant, i| %>
     <div class="container" xmlns="http://www.w3.org/1999/html">
       <div class="ResTitle">
-        <div class="displaygraph">
-          <%- image_src = restaurant[:image_url] %>
-          <% restaurant_name = "slides"+i.to_s%>
-          <div class="slideshow-container">
-            <div class="mySlides" name = <%="#{restaurant_name}"%> >
-              <div class="numbertext"><%= i%></div>
-              <%= image_tag image_src, :style => 'height:120px;width:120px' %>
-            </div>
-          </div>
-        </div>
-        <h2><%= restaurant[:name] %></h2>
+        <%= render :partial => 'restaurant_basic_info', :locals => {:restaurant => restaurant, :i => i} %>
         <%- id_name = "toggle"+ i.to_s%>
-        <h4><%= restaurant[:address]  %>
-          <% if @preference['rating'] %>
-              Rating : <%= restaurant[:rating] %>
-              <span class=<%if restaurant[:rating] >= 1 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></span>
-              <span class=<%if restaurant[:rating] >= 2 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></span>
-              <span class=<%if restaurant[:rating] >= 3 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></span>
-              <span class=<%if restaurant[:rating] >= 4 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></span>
-              <span class=<%if restaurant[:rating] >= 5 %> "fa fa-star checked" <%else%>"fa fa-star"<%end%>></span>
-              (<%= restaurant[:review_count]%>)
-          <% end %>
-        </h4>
         <% location = restaurant[:name].tr(" ", "+") + "," + restaurant[:address].tr(" ", "+")
            address = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyC1crIIEC4So_FjEGhQ2QX1W9dc7eeM2Ds&q=' + location%>
         <button type="button" class="mybtn collapsed" data-toggle="collapse" data-target=<%="##{id_name}"%>></button>
@@ -85,5 +64,4 @@
 
 <%end%>
 <hr/>
-<button class="scrlBtn" title="Go to top">Top</button>
 <%= render :partial => 'footer_button_group' %>

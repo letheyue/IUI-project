@@ -1,9 +1,9 @@
+<div style="padding: 5%;">
 <div class="displaygraph">
   <%- image_src = restaurant[:image_url] %>
   <% restaurant_name = "slides"+i.to_s%>
   <div class="slideshow-container">
     <div class="mySlides" name = <%="#{restaurant_name}"%> >
-      <div class="numbertext"><%= i+1%></div>
       <%= image_tag image_src, :style => 'height:160px;width:240px' %>
     </div>
   </div>
@@ -18,3 +18,4 @@
     <% end %>
   <% end %>
 </h4>
+</div>
