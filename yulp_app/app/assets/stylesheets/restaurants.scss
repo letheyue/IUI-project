@@ -8,7 +8,11 @@ body {
   background-image: url("background.jpeg");
   background-attachment: fixed;
   background-size:cover;
+<<<<<<< HEAD
   color: white;
+=======
+
+>>>>>>> some decoration, center paginate, fix footer, background image
 }
 main {
   background: #EEE;
@@ -39,7 +43,10 @@ p {
   opacity: 0.8;
   border-radius: 15px; /* Rounded corners */
   margin: 5px auto;
+<<<<<<< HEAD
   color: black;
+=======
+>>>>>>> some decoration, center paginate, fix footer, background image
 }
 
 .ResTitle:hover{
@@ -86,7 +93,7 @@ input[type=text] {
 .displaygraph{
   position: absolute;
   right: 15%;
-}
+
 
 /* Caption text */
 .text {
