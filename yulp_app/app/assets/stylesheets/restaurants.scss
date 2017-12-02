@@ -148,6 +148,17 @@ input[type=text]:focus {
   height: 300px;
   overflow: scroll;
 }
+
+.footerBtn{
+  bottom: 30px; /* Place the button at the bottom of the page */
+  padding: 15px; /* Some padding */
+  border-radius: 10px; /* Rounded corners */
+  background-color: red; /* Set a background color */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  color: white; /* Text color */
+
+}
 .scrlBtn {
   position: fixed; /* Fixed/sticky position */
   bottom: 20px; /* Place the button at the bottom of the page */
