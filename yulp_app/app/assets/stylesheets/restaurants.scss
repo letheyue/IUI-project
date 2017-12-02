@@ -5,7 +5,10 @@
 
 body {
   font-family: "Open Sans", Arial;
-  background: #ffffff;
+  background-image: url("background.jpeg");
+  background-attachment: fixed;
+  background-size:cover;
+
 }
 main {
   background: #EEE;
@@ -33,7 +36,14 @@ p {
   width: 80%;
   position: relative;
   background: #ffffff;
-  margin: 0px auto;
+  opacity: 0.8;
+  border-radius: 15px; /* Rounded corners */
+  margin: 5px auto;
+}
+
+.ResTitle:hover{
+  opacity: 1.0;
+  width: 85%;
 }
 .map{
   padding:10px;
@@ -74,10 +84,12 @@ input[type=text]:focus {
   outline: none;
 }
 .displaygraph{
-  float: right;
+  position: absolute;
+  right: 15%;
 }
 
-.mySlides {display:none;
+.mySlides {
+  display:none;
   width: 120px;
   height: 120px;}
 
@@ -150,8 +162,9 @@ input[type=text]:focus {
 }
 
 .footerBtn{
+  position: fixed;
   bottom: 30px; /* Place the button at the bottom of the page */
-  padding: 15px; /* Some padding */
+  padding: 10px; /* Some padding */
   border-radius: 10px; /* Rounded corners */
   background-color: red; /* Set a background color */
   border: none; /* Remove borders */
@@ -161,7 +174,7 @@ input[type=text]:focus {
 }
 .scrlBtn {
   position: fixed; /* Fixed/sticky position */
-  bottom: 20px; /* Place the button at the bottom of the page */
+  bottom: 30px; /* Place the button at the bottom of the page */
   right: 30px; /* Place the button 30px from the right */
   z-index: 99; /* Make sure it does not overlap */
   border: none; /* Remove borders */
