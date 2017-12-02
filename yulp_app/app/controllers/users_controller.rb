@@ -10,7 +10,8 @@ class UsersController < ApplicationController
   def show
     # @user = current_user
     @reviews = current_user.reviews
-    @histories = current_user.search_histories.order(updated_at: :desc)
+    # only 10 most recent records
+    @histories = current_user.search_histories.order(updated_at: :desc).take(10)
   end
 
   def create
