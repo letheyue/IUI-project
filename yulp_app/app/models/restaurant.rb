@@ -202,13 +202,9 @@ class Restaurant < ActiveRecord::Base
       logger.info('Same Term Encountered.')
       return @raw_results
     else
-<<<<<<< HEAD
       @raw_results = Restaurant.search(search_str || '').sort{ |a,b|
         calculate_overall_weight_for_restaurant(b, preference) <=> calculate_overall_weight_for_restaurant(a, preference)
       }
-=======
-      @raw_results = Restaurant.search(search_str || '').sort{ |a,b| b.rating.to_f <=> a.rating.to_f}
->>>>>>> Implement Custom Comparator
       if search_str
         @term = search_str
       else
