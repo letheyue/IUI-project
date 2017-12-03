@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :valid_user_id
+  before_action :valid_user_id, except: [:new]
 
 
   def new
