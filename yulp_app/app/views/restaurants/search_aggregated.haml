@@ -1,23 +1,22 @@
 =stylesheet_link_tag 'restaurants/aggregated'
+.SearchForm
+  %h2 Aggregated Map for Searching  #{params[:search]}
+  .row
+    .col-sm-9
+      =render :partial => 'aggregated_map'
 
-
-%h2 Aggregated Map for Searching '#{params[:search]}'
-.row
-  .col-sm-9
-    =render :partial => 'aggregated_map'
-
-    = will_paginate(@restaurant, :style => 'color:red')
-    =link_to('Back to Search',
-            search_restaurants_path(:search => params[:search], :page => params[:page]), :class => 'btn btn-primary')
-  .col-sm-3
-    #caption
-    -@restaurant.each_with_index do |rest,i|
-      .dummy{:id => "rest_#{i+1}"}
-        %h3.dummy{ :style => 'color:red'}=rest.name
-        .dummy{} Rating: #{rest.rating}
-        -if rest.price != ''
-          .dummy{} Price: #{rest.price}
-        %br
+      = will_paginate(@restaurant, :style => 'color:red')
+      =link_to('Back to Search',
+              search_restaurants_path(:search => params[:search], :page => params[:page]), :class => 'btn btn-primary')
+    .col-sm-3
+      #caption
+      -@restaurant.each_with_index do |rest,i|
+        .dummy{:id => "rest_#{i+1}"}
+          %h3.dummy{ :style => 'color:red'}=rest.name
+          .dummy{} Rating: #{rest.rating}
+          -if rest.price != ''
+            .dummy{} Price: #{rest.price}
+          %br
 
 =javascript_include_tag 'restaurants/aggregated'
 

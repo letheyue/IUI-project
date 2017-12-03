@@ -2,21 +2,18 @@
 <div class="displaygraph">
   <%- image_src = restaurant[:image_url] %>
   <% restaurant_name = "slides"+i.to_s%>
-  <div class="slideshow-container">
-    <div class="mySlides" name = <%="#{restaurant_name}"%> >
-      <%= image_tag image_src, :style => 'height:160px;width:240px' %>
-    </div>
-  </div>
+  <%= image_tag image_src, :style => 'height:160px;width:240px' %>
 </div>
-<h2><%= link_to "#{restaurant[:name]}", restaurant_path(restaurant) %></h2>
+<h2><%= link_to "#{restaurant[:name]}", restaurant_path(restaurant), style: 'color: #B00100' %></h2>
 <h4><%= restaurant[:address]  %>
-  Price: <%= restaurant[:price] %>
+  <br>Price: <%= restaurant[:price] %>
   <% if @preference['rating'] %>
-    Rating : <%= restaurant[:rating] %>
+    <br>Rating : <%= restaurant[:rating] %>
     <%= render :partial => 'restaurant_stars', :locals => {:rating => restaurant[:rating] }   %>
     <% if @preference['reviews'] %>
       (<%= restaurant[:review_count]%>)
     <% end %>
   <% end %>
+  <%= link_to '<i class="glyphicon glyphicon-comment"></i>'.html_safe, new_restaurant_review_path(restaurant), class: "btn", style:"color:  #B00100;background-color: transparent;  border: none", :data => {:toggle=>"tooltip"},'data-original-title' => "Make Review"%>
 </h4>
 </div>

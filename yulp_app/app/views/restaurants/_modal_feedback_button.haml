@@ -1,4 +1,4 @@
-%button#show.btn.footerBtn{style: ' right: 16.75%; padding: 17px;'} <span class="glyphicon glyphicon-envelope"></span>
+%button#show.btn.footerBtn{style: ' right: 16.25%; padding: 0;'} <span style= 'padding: 20px;' title="Send us Feedback!" data-toggle="tooltip" data-placement="top" class="glyphicon glyphicon-envelope" ></span>
 .modal.fade#feedback-form{tabindex: "-1", role: "dialog", :aria => {:labelledby => "exampleModalLabel", :hidden => true}}
   .modal-dialog{:role => "document",style: 'color: black'}
     .modal-content
@@ -15,6 +15,6 @@
           =label_tag 'Content'
           =text_area_tag 'Content', 'Enter......'
       .modal-footer
-        = submit_tag 'Save', :form => 'feed_form', :class => 'btn btn-xs btn-warning', :id => 'submit'
+        = submit_tag 'Save', :form => 'feed_form', :class => 'btn btn-primary', :id => 'submit', :style => 'width: 10%;'
 
-        %a{:href => '#', :data => {:dismiss => 'modal'}, :class => 'btn btn-xs btn-success'} Cancel
+        %a{:href => '#', :data => {:dismiss => 'modal'}, :class => 'btn btn-default'} Cancel

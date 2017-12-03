@@ -1,9 +1,9 @@
 -if current_page?(action: 'search')
   =link_to('<i class="glyphicon glyphicon-map-marker"></i>'.html_safe,
-            search_aggregated_restaurants_path(:search => params[:search], :page => params[:page]), :class => 'footerBtn', :style => 'right:23.25%; padding: 17px;')
+            search_aggregated_restaurants_path(:search => params[:search], :page => params[:page]), :class => 'footerBtn', :style => 'right:23.25%; padding: 17px;',:data => {:toggle=>"tooltip"},'data-original-title' => "Aggregated Map")
 -else
   =link_to('<i class="glyphicon glyphicon-map-marker"></i>'.html_safe,
-            aggregated_restaurants_path(:page => params[:page]), :class => 'footerBtn', :style => 'right:23.25%; padding: 17px;')
+            aggregated_restaurants_path(:page => params[:page]), :class => 'footerBtn', :style => 'right:23.25%; padding: 17px;',:data => {:toggle=>"tooltip"},'data-original-title' => "Aggregated Map")
 
 =link_to('<i class="glyphicon glyphicon-user"></i>'.html_safe,
-            user_path(current_user), :class => 'footerBtn', :style => 'right:20%; padding: 17px;')
+            user_path(current_user), :class => 'footerBtn', :style => 'right:20%; padding: 17px;',:data => {:toggle=>"tooltip"},'data-original-title' => "Back to Profile")

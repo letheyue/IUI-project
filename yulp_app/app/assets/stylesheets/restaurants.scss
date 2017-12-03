@@ -21,7 +21,7 @@ h2 {
   color: #B00100;
 }
 h4{
-  text-align: center;
+  text-align: left;
   color: #000000;
   font-size: 100%;
 }
@@ -29,6 +29,16 @@ p {
   padding: 20%;
   font-size: 13px;
   color: #000000;
+}
+
+.RegForm{
+  height: auto;
+  width: 80%;
+  position: relative;
+  background: #ffffff;
+  border-radius: 15px; /* Rounded corners */
+  margin: 5px auto;
+  color: black;
 }
 
 .ResTitle{
@@ -60,20 +70,17 @@ input[type=text] {
 /* When the input field gets focus, change its width to 100% */
 
 
-.mybtn{
-  background-color: #ffffff;
-  width: 100%
-}
 
 .mybtn:after {
+  bottom: 5%;
   font-family: "Glyphicons Halflings";
   color: #B00100;
   content: "\e113" ;
+
 }
 /* Icon when the collapsible content is hidden */
 .mybtn.collapsed:after {
   color: #B00100;
-
   content: "\e114";
 }
 .mybtn{
@@ -105,7 +112,7 @@ input[type=text] {
   position: relative;
   margin-left: 7%;
   margin-bottom: 10%;
-  width: 340px;
+  width: 320px;
 
 }
 .reviewcontainer{
@@ -174,3 +181,4 @@ input[type=text] {
   background-color:#d9534f
 
 }
+

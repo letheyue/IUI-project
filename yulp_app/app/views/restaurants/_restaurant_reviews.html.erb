@@ -12,7 +12,7 @@
             <td style="padding-top: 10px;">
               <%= render :partial => 'restaurant_stars', :locals => {:rating => user_rating }   %>
               <br/>
-              <%= user_review%><%= link_to "show more", review_url, target: :_blank%></td>
+              <%= user_review%><%if !review_url.nil?%><%= link_to "show more", review_url, target: :_blank%><%end%></td>
           </tr>
         <%end%>
       <%end%>
