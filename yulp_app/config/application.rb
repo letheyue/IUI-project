@@ -27,6 +27,7 @@ module YulpApp
         false
       end
     end
+    config.assets.precompile += %w( review.js )
 
   end
 end

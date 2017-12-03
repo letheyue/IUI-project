@@ -1,0 +1,25 @@
+.rating {
+    overflow: hidden;
+    display: inline-block;
+}
+
+.rating-input {
+    float: right;
+    width: 16px;
+    height: 16px;
+    opacity: 0;
+}
+
+
+.rating:hover .fa-star:hover ,
+.rating:hover .fa-star:hover ~ .fa-star,
+.rating-input:checked ~ .fa-star{
+    color: orange;
+}
+
+.fa-star,
+.rating:hover .fa-star{
+    cursor: pointer;
+    float: right;
+    color: black;
+}
