@@ -25,8 +25,5 @@
   <% if restaurant.url %>
       <%= link_to "more about #{restaurant.name}", restaurant.url, target: :_blank%>
   <% end %>
-  <h3><span class="fa fa-cutlery"> Popular times</span></h3>
-  <% if @preference['popular'] %>
-      <%= column_chart(get_popular_time(@restaurant), download: true, height: '270px', width: '75%', colors: ["pink", "#999"]) %>
-  <% end %>
+
 </div>

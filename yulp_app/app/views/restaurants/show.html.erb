@@ -39,8 +39,14 @@
           <%= @restaurant.zip_code%>
         </div>
       </div>
-      <div class="col-md-6", style="margin-left: 5%;">
+      <div class="col-md-4" style="margin-left: 5%;">
         <%= render :partial => 'restaurant_details', :locals => {:restaurant => @restaurant, :open_hour => @open_hour} %>
+      </div>
+      <div class="col-md-4" style="margin-left: 5%;">
+        <h3><span class="fa fa-cutlery"> Popular times</span></h3>
+        <% if @preference['popular'] %>
+            <%= column_chart(get_popular_time(@restaurant), download: true, height: '270px', width: '89%', colors: ["pink", "#999"]) %>
+        <% end %>
       </div>
     </div>
     <div class="row">
