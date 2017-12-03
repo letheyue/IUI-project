@@ -34,12 +34,11 @@ ActiveRecord::Schema.define(version: 20171201191730) do
   end
 
   create_table "feedbacks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id",                  null: false
     t.string   "subject"
     t.text     "content",    limit: 65535
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
-    t.integer  "user_id"
-    t.index ["user_id"], name: "index_feedbacks_on_user_id", using: :btree
   end
 
   create_table "preferences", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -120,7 +119,6 @@ ActiveRecord::Schema.define(version: 20171201191730) do
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
-  add_foreign_key "feedbacks", "users"
   add_foreign_key "reviews", "restaurants"
   add_foreign_key "reviews", "users"
   add_foreign_key "search_histories", "users"

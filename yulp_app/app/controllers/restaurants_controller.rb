@@ -10,7 +10,7 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.paginate(:page => params[:page],:per_page => @preference['restaurant_per_page']).all.order("name ASC")
     # Use of Review.all will have performance issues, which is not preferred
     # For now, apply cache mechanism
-    @reviews = Review.get_all_reviews
+    @reviews = Review.get_all_reviews.reverse_order
   end
 
   def search

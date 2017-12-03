@@ -43,6 +43,13 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :restaurants do
+    resources :reviews, only: [:new] do
+
+    end
+  end
+  post '/restaurants/:restaurant_id/reviews/new', to: 'reviews#create'
+
 
   resources :sessions, only: [:create, :destroy]
   # facebook login & google login
