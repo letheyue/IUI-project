@@ -1,10 +1,6 @@
 
-.row
-  .col-sm-8
-    .dummy{:id => "pre_#{@preference['restaurant_per_page']}"}
-    = will_paginate(@restaurant, :style => 'color:red')
-  .col-sm-4
-    =render :partial => 'modal_feedback_button'
-    .footerBtn{style: 'right: 20%'}
-      =render :partial => 'aggregated_link_button'
-      %button.scrlBtn Top
+.dummy{:id => "pre_#{@preference['restaurant_per_page']}"}
+  = will_paginate(@restaurant, :style => 'color:red')
+=render :partial => 'modal_feedback_button'
+=render :partial => 'aggregated_link_button'
+%button.scrlBtn Top

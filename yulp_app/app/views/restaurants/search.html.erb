@@ -5,17 +5,15 @@
 <p class="alert alert-success hide" id="feedback-info">
   Feedback has been saved successfully!
 </p>
-<div class="row">
-  <div class="col-sm-4"></div>
-  <div class="col-sm-4">
-    <%= form_tag(search_restaurants_path, :method => "get", id: "search-form") do %>
-        <%= label_tag 'Search for...' %>
-        <%= text_field_tag :search, params[:search], placeholder: "Search restaurant's name or address or phone number or city or zip_code" %>
-        <%= submit_tag "Search", :name => nil, :class => 'btn btn-primary btn-block' %>
-    <% end %>
-  </div>
+<div class="search">
+  <div class="row">
+      <%= form_tag(search_restaurants_path, :method => "get", id: "search-form") do %>
+          <%= label_tag 'Search for...' %>
+          <%= text_field_tag :search, params[:search], placeholder: "Search restaurant's name or address or phone number or city or zip_code",style: 'color: black;' %>
+          <%= submit_tag "Search", :name => nil, :class => 'btn', style:'background-color: #B00100; width:auto' %>
+      <% end %>
+    </div>
 </div>
-<hr/>
 
 <% @restaurant.each_with_index do |restaurant, i| %>
     <div class="container" xmlns="http://www.w3.org/1999/html">
@@ -41,9 +39,7 @@
               <%= render :partial => 'restaurant_other_details', :locals => {:restaurant => restaurant} %>
             </div>
           </div>
-          <hr/>
           <div class="row">
-            <div class="col-sm-4"></div>
             <div class="col-sm-8">
               <%= render :partial => 'restaurant_reviews', :locals => {:restaurant => restaurant, :reviews => @reviews} %>
             </div>
