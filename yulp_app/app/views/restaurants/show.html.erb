@@ -1,8 +1,7 @@
 <%= javascript_include_tag 'restaurants/show' %>
 
 <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' %>
-
-<body>
+<div class="ResTitle">
   <header class="jumbotron">
     <div class="container">
       <div class="row row-header">
@@ -53,12 +52,11 @@
       </div>
       <div class="col-md-4">
         <h3><span class="fa fa-cutlery"> Popular times</span></h3>
-
         <% if @preference['popular'] %>
-            <%= column_chart(get_popular_time(@restaurant), download: true, height: '270px', width: '75%') %>
+            <%= column_chart(get_popular_time(@restaurant), download: true, height: '270px', width: '75%', colors: ["pink", "#999"]) %>
         <% end %>
       </div>
       </div>
 
   </div>
-</body>
+</div>
