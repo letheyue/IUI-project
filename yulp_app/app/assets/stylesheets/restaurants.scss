@@ -184,3 +184,22 @@ input[type=text]:focus {
   text-align: center;
   display: block;
 }
+
+.row-content {
+  margin: 0px auto;
+  padding: 50px 0px;
+  border-bottom: 1px ridge;
+  min-height: 400px;
+}
+
+.img-fluid {
+  max-width:100%;height:auto
+}
+
+.d-block {
+  display:block!important
+}
+
+.badge-danger {
+  background-color:#d9534f
+}

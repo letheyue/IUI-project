@@ -1,0 +1,34 @@
+<div class="detail_section">
+
+  <h3><span class="fa fa-clock-o"> Open Hour</span></h3>
+    <%if open_hour %>
+      <% @hash.each do |day|%>
+          <%= day %><br>
+        <% end %>
+    <% end %>
+
+  <h3><span class="fa fa-money"> Discount</span></h3>
+
+  <% if @preference['discount'] %>
+      <span class="badge badge-danger">
+        Discount : <%= restaurant[:discount] %>%</span><br>
+  <% end %>
+
+  <h3><span class="fa fa-mobile"> Phone number</span></h3>
+
+  <% if restaurant.phone %>
+      <%= restaurant.phone %>
+  <% end %>
+
+  <h3><span class="fa fa-cutlery"> Popular times</span></h3>
+
+  <% if @preference['popular'] %>
+      <%= column_chart(get_popular_time(restaurant), download: true, height: '270px', width: '75%') %>
+  <% end %>
+
+  <h3><span class="fa fa-at"> Details on Yelp</span></h3>
+
+  <% if restaurant.url %>
+      <%= link_to "more about #{restaurant.name}", restaurant.url, target: :_blank%>
+  <% end %>
+</div>

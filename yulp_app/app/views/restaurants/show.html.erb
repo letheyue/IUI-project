@@ -1,0 +1,57 @@
+<%= javascript_include_tag 'restaurants/show' %>
+
+<%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' %>
+
+<body>
+  <header class="jumbotron">
+    <div class="container">
+      <div class="row row-header">
+        <div class="col-md-6">
+          <h3><%= @restaurant.name %></h3>
+          <h3><%= render :partial => 'restaurant_stars', :locals => {:rating => @restaurant.rating}%></h3>
+          <h3><%= @restaurant.review_count%> reviews
+            <a href="#reviews">show details</a>
+          </h3>
+          <h3>price: <%= @restaurant.price %></h3>
+        </div>
+        <div class="col-md-3 align-self-right">
+          <img class="img-fluid" src=<%= @restaurant.image_url %>>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <%- id_name = "toggle"+ @restaurant.id.to_s%>
+  <% location = ERB::Util.url_encode(@restaurant[:name] + "," + @restaurant[:address])
+     address = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyC1crIIEC4So_FjEGhQ2QX1W9dc7eeM2Ds&q=' + location%>
+  <div data-target=<%="##{id_name}"%> id= <%="#{id_name}"%>>
+    <div class="row">
+      <div class="col-md-4">
+        <div class = "map">
+          <iframe
+          width="300"
+          height="300"
+          frameborder="0" style="border:0"
+          src=<%="#{address}"%> allowfullscreen>
+          </iframe><br>
+          Address:
+          <%= @restaurant.address%><br>
+          <%= @restaurant.city%>
+          <%= @restaurant.zip_code%>
+        </div>
+
+        <hr class="col-md-12">
+          <div class="col-md"></div>
+          <div class="col-md" id="reviews">
+            <% if @preference['reviews'] %>
+                <%= render :partial => 'restaurant_reviews', :locals => {:restaurant => @restaurant, :reviews => @reviews} %>
+            <% end %>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <%= render :partial => 'restaurant_details', :locals => {:restaurant => @restaurant, :open_hour => @open_hour} %>
+      </div>
+    </div>
+
+  </div>
+</body>

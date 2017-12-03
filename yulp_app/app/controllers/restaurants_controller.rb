@@ -75,7 +75,28 @@ class RestaurantsController < ApplicationController
     file.close
   end
 
-
+  def show
+    id = params[:id]
+    @restaurant = Restaurant.find(id)
+    @preference = get_preference
+    @reviews = Review.get_all_reviews
+    @open_hour = @restaurant.open_hour
+    if (@open_hour)
+      orig = @open_hour.to_s
+      @hash = orig.split(',')
+      @hash.each do |day|
+        if (day.include? "{")
+          day.reverse!.chop!.reverse!
+        end
+        if (day.include? "}")
+          day.chop!
+        end
+        day.gsub!("=>", " : ")
+        day.gsub!(/"/, "  ")
+        day.gsub!("_", " ")
+      end
+    end
+  end
 
 
   private

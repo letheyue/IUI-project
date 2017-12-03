@@ -8,7 +8,7 @@
     </div>
   </div>
 </div>
-<h2><%= restaurant[:name] %></h2>
+<h2><%= link_to "#{restaurant[:name]}", restaurant_path(restaurant) %></h2>
 <h4><%= restaurant[:address]  %>
   Price: <%= restaurant[:price] %>
   <% if @preference['rating'] %>
