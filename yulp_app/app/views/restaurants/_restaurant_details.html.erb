@@ -20,12 +20,6 @@
       <%= restaurant.phone %>
   <% end %>
 
-  <h3><span class="fa fa-cutlery"> Popular times</span></h3>
-
-  <% if @preference['popular'] %>
-      <%= column_chart(get_popular_time(restaurant), download: true, height: '270px', width: '75%') %>
-  <% end %>
-
   <h3><span class="fa fa-at"> Details on Yelp</span></h3>
 
   <% if restaurant.url %>

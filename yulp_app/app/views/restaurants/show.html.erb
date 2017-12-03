@@ -48,10 +48,17 @@
             <% end %>
         </div>
       </div>
-      <div class="col-md-8">
+      <div class="col-md-4">
         <%= render :partial => 'restaurant_details', :locals => {:restaurant => @restaurant, :open_hour => @open_hour} %>
       </div>
-    </div>
+      <div class="col-md-4">
+        <h3><span class="fa fa-cutlery"> Popular times</span></h3>
+
+        <% if @preference['popular'] %>
+            <%= column_chart(get_popular_time(@restaurant), download: true, height: '270px', width: '75%') %>
+        <% end %>
+      </div>
+      </div>
 
   </div>
 </body>
