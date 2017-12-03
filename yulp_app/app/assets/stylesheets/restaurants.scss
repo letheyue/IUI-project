@@ -9,10 +9,14 @@ body {
   background-attachment: fixed;
   background-size:cover;
 <<<<<<< HEAD
+<<<<<<< HEAD
   color: white;
 =======
 
 >>>>>>> some decoration, center paginate, fix footer, background image
+=======
+  color: white;
+>>>>>>> some decoration, adjust footer bottons, search, background
 }
 main {
   background: #EEE;
@@ -44,9 +48,13 @@ p {
   border-radius: 15px; /* Rounded corners */
   margin: 5px auto;
 <<<<<<< HEAD
+<<<<<<< HEAD
   color: black;
 =======
 >>>>>>> some decoration, center paginate, fix footer, background image
+=======
+  color: black;
+>>>>>>> some decoration, adjust footer bottons, search, background
 }
 
 .ResTitle:hover{
@@ -90,10 +98,10 @@ input[type=text] {
   outline: none;
   margin-top: 2%;
 }
-.displaygraph{
+.displaygraph {
   position: absolute;
   right: 15%;
-
+}
 
 /* Caption text */
 .text {
@@ -159,6 +167,7 @@ input[type=text] {
 .search{
   height: 20%;
   text-align: center;
+<<<<<<< HEAD
 }
 
 .row-content {
@@ -179,4 +188,7 @@ input[type=text] {
 .badge-danger {
   background-color:#d9534f
 
+=======
+  margin: 0 auto;
+>>>>>>> some decoration, adjust footer bottons, search, background
 }
