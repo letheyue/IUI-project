@@ -31,7 +31,6 @@ class RestaurantsController < ApplicationController
     # For now, apply cache mechanism
     @reviews = Review.get_all_reviews
 
-
   end
 
   def search_aggregated
