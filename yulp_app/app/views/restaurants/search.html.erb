@@ -5,23 +5,20 @@
 <p class="alert alert-success hide" id="feedback-info">
   Feedback has been saved successfully!
 </p>
-<div class="row">
-  <div class="col-sm-4"></div>
-  <div class="col-sm-4">
-    <%= form_tag(search_restaurants_path, :method => "get", id: "search-form") do %>
-        <%= label_tag 'Search for...' %>
-        <%= text_field_tag :search, params[:search], placeholder: "Search restaurant's name or address or phone number or city or zip_code" %>
-        <%= submit_tag "Search", :name => nil, :class => 'btn btn-primary btn-block' %>
-    <% end %>
-  </div>
+<div class="search">
+  <div class="row">
+      <%= form_tag(search_restaurants_path, :method => "get", id: "search-form") do %>
+          <%= label_tag 'Search for...' %>
+          <%= text_field_tag :search, params[:search], placeholder: "Search restaurant's name or address or phone number or city or zip_code",style: 'color: black;' %>
+          <%= submit_tag "Search", :name => nil, :class => 'btn', style:'background-color: #B00100; width:auto' %>
+      <% end %>
+    </div>
 </div>
-<hr/>
 
 <% @restaurant.each_with_index do |restaurant, i| %>
     <div class="container" xmlns="http://www.w3.org/1999/html">
       <div class="ResTitle">
         <%= render :partial => 'restaurant_basic_info', :locals => {:restaurant => restaurant, :i => i} %>
-
         <%- id_name = "toggle"+ i.to_s%>
         <% location = ERB::Util.url_encode(restaurant[:name] + "," + restaurant[:address])
            address = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyC1crIIEC4So_FjEGhQ2QX1W9dc7eeM2Ds&q=' + location%>
@@ -42,23 +39,17 @@
               <%= render :partial => 'restaurant_other_details', :locals => {:restaurant => restaurant} %>
             </div>
           </div>
-          <hr/>
           <div class="row">
-            <div class="col-sm-4"></div>
             <div class="col-sm-8">
               <% if @preference['reviews'] %>
                 <%= render :partial => 'restaurant_reviews', :locals => {:restaurant => restaurant, :reviews => @reviews} %>
               <% end %>
             </div>
           </div>
-
-
-
         </div>
       </div>
     </div>
 <%end%>
 <hr/>
-<button class="scrlBtn" title="Go to top">Top</button>
 <%= render :partial => 'footer_button_group' %>
 

@@ -5,7 +5,10 @@
 
 body {
   font-family: "Open Sans", Arial;
-  background: #ffffff;
+  background-image: url("background.jpeg");
+  background-attachment: fixed;
+  background-size:cover;
+  color: white;
 }
 main {
   background: #EEE;
@@ -33,23 +36,29 @@ p {
   width: 80%;
   position: relative;
   background: #ffffff;
-  margin: 0px auto;
+  opacity: 0.8;
+  border-radius: 15px; /* Rounded corners */
+  margin: 5px auto;
+  color: black;
+}
+
+.ResTitle:hover{
+  opacity: 1.0;
+  width: 85%;
 }
 .map{
-  padding:10px;
-  float: left;
+  position: absolute;
+  margin-left: 15%;
 }
 
 input[type=text] {
-  width: 130px;
+  width: 50%;
   -webkit-transition: width 0.4s ease-in-out;
   transition: width 0.4s ease-in-out;
 }
 
 /* When the input field gets focus, change its width to 100% */
-input[type=text]:focus {
-  width: 100%;
-}
+
 
 .mybtn{
   background-color: #ffffff;
@@ -72,33 +81,14 @@ input[type=text]:focus {
   width: 100%;
   border: none;
   outline: none;
+  margin-top: 2%;
 }
+
 .displaygraph{
-  float: right;
+  position: absolute;
+  right: 15%;
 }
 
-.mySlides {display:none;
-  width: 120px;
-  height: 120px;}
-
-
-/* Slideshow container */
-.slideshow-container {
-  width: 120px;
-  height: 120px;
-  position: relative;
-  margin: auto;
-}
-
-
-/* Next & previous buttons */
-
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  float: right;
-  /*border-radius: 3px 0 0 3px;*/
-}
 /* Caption text */
 .text {
   color: #f2f2f2;
@@ -110,47 +100,34 @@ input[type=text]:focus {
   text-align: center;
 }
 
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
 
-
-/* Fading animation */
-.fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-@-webkit-keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
-}
-
-@keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
-}
 .reviews{
   position: relative;
-  padding: 10px;
+  margin-left: 7%;
+  margin-bottom: 10%;
   width: 340px;
-  float: left;
+
 }
 .reviewcontainer{
   width: 320px;
   height: 300px;
   overflow: scroll;
 }
+
+.footerBtn{
+  position: fixed;
+  bottom: 30px; /* Place the button at the bottom of the page */
+  padding: 10px; /* Some padding */
+  border-radius: 10px; /* Rounded corners */
+  background-color: red; /* Set a background color */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  color: white; /* Text color */
+
+}
 .scrlBtn {
   position: fixed; /* Fixed/sticky position */
-  bottom: 20px; /* Place the button at the bottom of the page */
+  bottom: 30px; /* Place the button at the bottom of the page */
   right: 30px; /* Place the button 30px from the right */
   z-index: 99; /* Make sure it does not overlap */
   border: none; /* Remove borders */
@@ -170,19 +147,12 @@ input[type=text]:focus {
 
 .detail_section{
   height: 350px;
-  padding: 10px;
+  margin-left: 10%;
 }
 
-.popout_grey_section{
-  background-color: #777777;
-  color: white;
-  height: auto;
-  width: inherit;
-  position: absolute;
-  bottom: 0;
-  opacity: 0.5;
+.search{
+  height: 20%;
   text-align: center;
-  display: block;
 }
 
 .row-content {
@@ -202,4 +172,5 @@ input[type=text]:focus {
 
 .badge-danger {
   background-color:#d9534f
+
 }
