@@ -1,46 +1,47 @@
-%h3 Detailed Preference for '#{current_user.name}', click each row if you want to make changes
+.RegForm
+  %h3 Detailed Preference for '#{current_user.name}', click each row if you want to make changes
 
-= form_tag(user_preference_path(current_user, preference), :method => :patch, :id => 'pform') do
+  = form_tag(user_preference_path(current_user, preference), :method => :patch, :id => 'pform') do
 
-  %table.table.table-striped.table-condensed.table-hover.dt-responsive
-    %thead
-      %tr
-        %td.center.col-sm-4 Type
-        %td.center.col-sm-8 Preference
-    %tbody
-      %tr
-        %td.center Price
-        %td{:id => 'td_price', :class => "#{convert_to_printable3 preference.price} center"} #{convert_to_printable3 preference.price}
-      %tr
-        %td.center Discount
-        %td{:id => 'td_discount', :class => "#{convert_to_printable3 preference.discount} center"} #{convert_to_printable3 preference.discount}
-      %tr
-        %td.center Popularity
-        %td{:id => 'td_popularity', :class => "#{convert_to_printable3 preference.popularity} center"} #{convert_to_printable3 preference.popularity}
-      %tr
-        %td.center Rating
-        %td{:id => 'td_rating', :class => "#{convert_to_printable3 preference.rating} center"} #{convert_to_printable3 preference.rating}
-      %tr
-        %td.center Crowded
-        %td{:id => 'td_crowded', :class => "#{convert_to_printable3 preference.crowded} center"} #{convert_to_printable3 preference.crowded}
-      %tr
-        %td.center Restaurants
-        %td{:id => 'td_restaurants_per_page', :class => 'center'} #{preference.restaurants_per_page}
-      %tr
-        %td.center Show Rating
-        %td{:id => 'tdd_show_rating', :class => "#{convert_to_printable2 preference.show_rating} center"} #{convert_to_printable2 preference.show_rating}
-      %tr
-        %td.center Show Reviews
-        %td{:id => 'tdd_show_reviews', :class => "#{convert_to_printable2 preference.show_reviews} center"} #{convert_to_printable2 preference.show_reviews}
-      %tr
-        %td.center Show Discount
-        %td{:id => 'tdd_show_discount', :class => "#{convert_to_printable2 preference.show_discount} center"} #{convert_to_printable2 preference.show_discount}
-      %tr
-        %td.center Show Popular Time
-        %td{:id => 'tdd_show_popular_time', :class => "#{convert_to_printable2 preference.show_popular_time} center"} #{convert_to_printable2 preference.show_popular_time}
+    %table.table.table-condensed.dt-responsive
+      %thead
+        %tr
+          %td.center.col-sm-4 Type
+          %td.center.col-sm-8 Preference
+      %tbody
+        %tr
+          %td.center Price
+          %td{:id => 'td_price', :class => "#{convert_to_printable3 preference.price} center"} #{convert_to_printable3 preference.price}
+        %tr
+          %td.center Discount
+          %td{:id => 'td_discount', :class => "#{convert_to_printable3 preference.discount} center"} #{convert_to_printable3 preference.discount}
+        %tr
+          %td.center Popularity
+          %td{:id => 'td_popularity', :class => "#{convert_to_printable3 preference.popularity} center"} #{convert_to_printable3 preference.popularity}
+        %tr
+          %td.center Rating
+          %td{:id => 'td_rating', :class => "#{convert_to_printable3 preference.rating} center"} #{convert_to_printable3 preference.rating}
+        %tr
+          %td.center Crowded
+          %td{:id => 'td_crowded', :class => "#{convert_to_printable3 preference.crowded} center"} #{convert_to_printable3 preference.crowded}
+        %tr
+          %td.center Restaurants
+          %td{:id => 'td_restaurants_per_page', :class => 'center'} #{preference.restaurants_per_page}
+        %tr
+          %td.center Show Rating
+          %td{:id => 'tdd_show_rating', :class => "#{convert_to_printable2 preference.show_rating} center"} #{convert_to_printable2 preference.show_rating}
+        %tr
+          %td.center Show Reviews
+          %td{:id => 'tdd_show_reviews', :class => "#{convert_to_printable2 preference.show_reviews} center"} #{convert_to_printable2 preference.show_reviews}
+        %tr
+          %td.center Show Discount
+          %td{:id => 'tdd_show_discount', :class => "#{convert_to_printable2 preference.show_discount} center"} #{convert_to_printable2 preference.show_discount}
+        %tr
+          %td.center Show Popular Time
+          %td{:id => 'tdd_show_popular_time', :class => "#{convert_to_printable2 preference.show_popular_time} center"} #{convert_to_printable2 preference.show_popular_time}
 
-.row
-  .col-sm-5
-  .col-sm-2
-    = submit_tag 'Save Changes', :form => 'pform', :class => 'btn-block btn-success hide', :id => 'submit'
-  .col-sm-5
+  .row
+    .col-sm-5
+    .col-sm-2
+      = submit_tag 'Save Changes', :form => 'pform', :class => 'btn-block btn-success hide', :id => 'submit'
+    .col-sm-5

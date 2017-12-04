@@ -1,19 +1,20 @@
 
 %h1 Your Recent Search History:
 %hr
-  %table.table.table-condensed.dt-responsive
-    %thead
-      %tr
-        %td.center Query Term
-        %td.center Query Times
-        %td.center Last Query Date
-    %tbody
-      -histories.each do |history|
+  .RegForm
+    %table.table.table-condensed.dt-responsive
+      %thead
         %tr
-          %td.center= link_to("#{history.query_term}",
-                      search_restaurants_path(:search => history.query_term),
-                      id: "history_#{history.id}", class: "btn btn-block btn-success")
-          %td.center= history.times
-          %td.center= history.updated_at
+          %td.center Query Term
+          %td.center Query Times
+          %td.center Last Query Date
+      %tbody
+        -histories.each do |history|
+          %tr
+            %td.center= link_to("#{history.query_term}",
+                        search_restaurants_path(:search => history.query_term),
+                        id: "history_#{history.id}", class: "btn btn-block btn-success")
+            %td.center= history.times
+            %td.center= history.updated_at
 
 

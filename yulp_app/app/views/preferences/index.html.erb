@@ -2,6 +2,7 @@
 
 <% provide(:title, 'Edit Your Preferences') %>
 <h1>Your Preference</h1>
-
+<div class="RegForm">
 <%= render :partial => 'preference_table', :locals => { :preference => @preference }   %>
+</div>
 <%= render :partial => 'preference_button_groups' %>
